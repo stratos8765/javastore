@@ -38,6 +38,8 @@ public abstract class Product {
         this.images=images;
         
     }
+    
+    //setters
     public void SetName(String name)
     {
         this.name=name;
@@ -62,6 +64,36 @@ public abstract class Product {
         this.images=images;
         
     }
+    //end setters
+    
+    //getters
+    public String GetName()
+    {
+        return this.name;
+        
+    }
+      public String GetDetails()
+    {
+        return this.details;
+        
+    }
+        public int GetCode()
+    {
+        return this.code;
+        
+    }
+          public float GetPrice()
+    {
+        return this.price;
+        
+    }
+            public Image[] GetImages()
+    {
+        return this.images;
+        
+    }
+         //end getters
+            
        public String toString()
    {
        str= "name:" + name + "details:" + details + "code:" + code + "price:" + price;
