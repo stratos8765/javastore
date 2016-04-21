@@ -36,5 +36,7 @@ public class ComputerProduct extends Product{
         this.graphicscard=graphicscard;
         this.monitor=monitor;
         this.os=os;
-    }
+
 }
+}
+
