@@ -16,6 +16,8 @@ public abstract class Product {
     private String details;
     private int code;
     private float price;
+    private String str;
+    
     private Image[] images = new Image[20];
     
         //Constructors
@@ -60,4 +62,10 @@ public abstract class Product {
         this.images=images;
         
     }
+       public String toString()
+   {
+       str= "name:" + name + "details:" + details + "code:" + code + "price:" + price;
+       
+      return str;
+   }
 }

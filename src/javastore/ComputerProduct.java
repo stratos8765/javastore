@@ -18,6 +18,8 @@ public class ComputerProduct extends Product{
     private String graphicscard;
     private String monitor;
     private String os;
+    private String str;
+    
     public ComputerProduct()
     {
         super();
@@ -37,5 +39,13 @@ public class ComputerProduct extends Product{
         this.monitor=monitor;
         this.os=os;
 
-}
+    }
+    public String toString()
+   {
+       this.str =super.toString();
+       str = str+"Processor:"+processor + "Ram:" + ram +"Graphics Card:" + graphicscard + "Monitor:" + monitor + "OS:"  + os;
+       
+       
+      return str;
+   }
 }
