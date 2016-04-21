@@ -107,5 +107,16 @@ public class MobileProduct extends Product{
         return this.colour;
         
     }
+    public String toString()
+    {
+        
+        
+            String str="";
+            str=str+super.toString();
+            str=str+"Monitor:"+monitor+"Processor:"+processor+"Camera:"+camera+"Wifi:"+wifi+"Color:("+colour.toString()+")";
+            
+            return str;
+            
+    }
 }
 
