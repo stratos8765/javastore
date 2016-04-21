@@ -20,6 +20,8 @@ public class ComputerProduct extends Product{
     private String os;
     private String str;
     
+    
+    //Constructores
     public ComputerProduct()
     {
         super();
@@ -40,6 +42,37 @@ public class ComputerProduct extends Product{
         this.os=os;
 
     }
+    //end constructores
+    
+    //setters
+    public void SetProcessor(String processor)
+    {
+        this.processor=processor;
+        
+    }
+        public void SetRam(String ram)
+    {
+        this.ram=ram;
+        
+    }
+                public void SetGraphicsCard(String graphicscard)
+    {
+        this.graphicscard=graphicscard;
+        
+        
+    }
+                        public void SetMonitor(String monitor)
+    {
+        this.monitor=monitor;
+        
+        
+    }
+                                public void SetOs(String os)
+    {
+        this.os=os;
+        
+    }
+    //end setters
     public String toString()
    {
        this.str =super.toString();
