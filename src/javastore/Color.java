@@ -29,6 +29,7 @@ public class Color {
    this.blue=blue;
    
    }
+   //setters
    public void SetGreen(int green)
    {
        this.green=green;
@@ -44,6 +45,8 @@ public class Color {
        this.blue=blue;
        
    }
+         //end setters
+         //getters
   public int GetGreen()
   {
       return this.green;
@@ -59,6 +62,8 @@ public class Color {
       return this.red;
       
   }
+      //end getters
+      
       public String toString()
       {
        str="Red:"+red+"Green:"+green+"Blue:"+blue;
