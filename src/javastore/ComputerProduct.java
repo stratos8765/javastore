@@ -43,9 +43,8 @@ public class ComputerProduct extends Product{
     public String toString()
    {
        this.str =super.toString();
-       str = str+"Processor:"+processor + "Ram:" + ram +"Graphics Card:" + graphicscard + "Monitor:" + monitor + "OS:"  + os;
+       str = str+"Processor:"+processor + "Ram:" + ram +"Graphics Card:" + graphicscard + "Monitor:" + monitor + "OS:"  + os;      
        
-       
-      return str;
+       return str;
    }
 }
