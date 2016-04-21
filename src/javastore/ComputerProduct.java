@@ -61,18 +61,45 @@ public class ComputerProduct extends Product{
         
         
     }
-                        public void SetMonitor(String monitor)
+    public void SetMonitor(String monitor)
     {
         this.monitor=monitor;
         
         
     }
-                                public void SetOs(String os)
-    {
+    public void SetOs(String os)
+        {
         this.os=os;
         
-    }
-//    //end setters
+        }
+//end setters
+                                //getters
+                                public String GetProcessor()
+                                {
+                                    return this.processor;
+                                    
+                                }
+                                 public String GetRam()
+                                    {
+                                    return this.ram;
+                                    
+                                    }
+                                public String GetOs()
+                                 {
+                                    return this.os;
+                                    
+                                  }
+                                public String GetMonitor()
+                                  {
+                                    return this.monitor;
+                                    
+                                  }
+                                public String GetGraphicsCard()
+                                 {
+                                    return this.graphicscard;
+                                    
+                                 }
+                                //end getters
     public String toString()
    {
        this.str =super.toString();
