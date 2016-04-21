@@ -72,7 +72,7 @@ public class ComputerProduct extends Product{
         this.os=os;
         
     }
-    //end setters
+//    //end setters
     public String toString()
    {
        this.str =super.toString();

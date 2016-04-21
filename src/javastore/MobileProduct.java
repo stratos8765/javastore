@@ -20,7 +20,7 @@ public class MobileProduct extends Product{
     private String wifi;
     private Color colour = new Color();
     
-    
+    //Constructores
     public MobileProduct()
     {
         super();
@@ -43,5 +43,7 @@ public class MobileProduct extends Product{
         this.colour=colour;
         
     }
+    //end constructores
+    
 }
 
