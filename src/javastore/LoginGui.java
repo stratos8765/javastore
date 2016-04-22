@@ -12,6 +12,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.ArrayList;
 import javax.swing.*;
 
 /**
@@ -30,8 +31,6 @@ public class LoginGui extends JFrame
 }
     public LoginGui()
     {
-       
-        
         super("Login");
         super.setLayout(new BorderLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -70,9 +69,7 @@ public class LoginGui extends JFrame
         super.setSize(250, 250);
         
         
-         Admin[] admins = new Admin[10];
-         Admin admin1 = new Admin("3oxic","stefan8765");
-         admins[0]=admin1;
+      
          try{
              
     
