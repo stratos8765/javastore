@@ -37,22 +37,22 @@ public class CameraProduct extends Product {
  }
  //end constructors
  //setters
- public void SetMegaPixels(int megapixels)
+ public void setMegaPixels(int megapixels)
  {
      this.megapixels=megapixels;
      
  }
- public void SetIso(int iso)
+ public void setIso(int iso)
  {
      this.iso=iso;
      
  }
- public void SetExposure(int exposure)
+ public void setExposure(int exposure)
  {
      this.exposure=exposure;
      
  }
- public void SetFps(int fps)
+ public void setFps(int fps)
  {
      this.fps=fps;
      
@@ -60,22 +60,22 @@ public class CameraProduct extends Product {
  //end Setters
  //getters
 
- public int GetMexaPixels()
+ public int getMexaPixels()
  {
      return this.megapixels;
      
  }
- public int GetIso()
+ public int getIso()
  {
      return this.iso;
      
  }
- public int GetExposure()
+ public int getExposure()
  {
      return this.exposure;
      
  }
- public int GetFps()
+ public int getFps()
  {
      return this.fps;
      
