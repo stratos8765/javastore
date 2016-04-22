@@ -113,7 +113,7 @@ public class MobileProduct extends Product{
         
             String str="";
             str=str+super.toString();
-            str=str+"Monitor:"+monitor+"Processor:"+processor+"Camera:"+camera+"Wifi:"+wifi+"Color:("+colour.toString()+")";  
+            str=str+"Monitor:"+monitor+"\n"+"Processor:"+processor+"\n"+"Camera:"+camera+"\n"+"Wifi:"+wifi+"\n"+"Color:("+colour.toString()+")"+"\n";  
             return str;
 
     }

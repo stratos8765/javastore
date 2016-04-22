@@ -61,7 +61,7 @@ private int afm;
     {
         String str="";
         str=str+super.toString();
-        str=str+"Address:"+address+"Telephone Number:"+telnumber+"AFM:"+afm;
+        str=str+"Address:"+address+"\n"+"Telephone Number:"+telnumber+"\n"+"AFM:"+afm+"\n";
         return str;
         
     }

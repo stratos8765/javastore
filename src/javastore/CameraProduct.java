@@ -84,7 +84,7 @@ public class CameraProduct extends Product {
  public String toString()
  {
     String str= super.toString();
-    str=str+"Megapixels:"+megapixels+"ISO:"+iso+"Exposure:"+exposure+"FPS:"+fps;
+    str=str+"Megapixels:"+megapixels+"\n"+"ISO:"+iso+"\n"+"Exposure:"+exposure+"\n"+"FPS:"+fps+"\n";
     
     return str;
     

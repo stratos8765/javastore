@@ -102,7 +102,7 @@ public class ComputerProduct extends Product{
     public String toString()
    {
        String str =  super.toString();
-       str = str+"Processor:"+processor + "Ram:" + ram +"Graphics Card:" + graphicscard + "Monitor:" + monitor + "OS:"  + os;      
+       str = str+"Processor:"+processor+"\n" + "Ram:" + ram +"\n"+"Graphics Card:" + graphicscard +"\n"+ "Monitor:" + monitor +"\n"+ "OS:"  + os+"\n";      
        
        return str;
    }

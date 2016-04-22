@@ -49,7 +49,7 @@ public abstract class User {
     public String toString()    
     {
         String str="";
-        str=str+"Username:"+username+"Password:"+password;
+        str=str+"Username:"+username+"\n"+"Password:"+password;
         return str;
         
     }

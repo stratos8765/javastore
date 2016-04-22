@@ -86,7 +86,7 @@ public class CompanyCustomer extends Customer
     {
         String str="";
         str=str+super.toString();
-        str=str+"Epwnymia:"+epwnymia+"Ypefthinos Epikoinwnias:"+ypefep+"FPA:"+fpa+"Discount:"+discount;
+        str=str+"Epwnymia:"+epwnymia+"\n"+"Ypefthinos Epikoinwnias:"+ypefep+"\n"+"FPA:"+fpa+"\n"+"Discount:"+discount+"\n";
         return str;
 
     }

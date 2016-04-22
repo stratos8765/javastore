@@ -61,7 +61,7 @@ public class NormalCustomer extends Customer
     {
         String str="";
         str=str+super.toString();
-        str=str+"Full Name:"+fullname+"Id number:"+idnumber+"FPA:"+fpa;
+        str=str+"Full Name:"+fullname+"\n"+"Id number:"+idnumber+"\n"+"FPA:"+fpa+"\n";
         return str;
         
     }

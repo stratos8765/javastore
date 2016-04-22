@@ -9,13 +9,8 @@ package javastore;
  *
  * @author 3oxic
  */
-public class Admin extends User
-{
-
-    public Admin(String username, String password) {
-        super(username, password);
-    }
-    
-    
-    
+public class IHandler {
+    public double currentLoad;
+    public String currentPrice;
+    public String configArgs[];
 }

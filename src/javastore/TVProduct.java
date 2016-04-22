@@ -50,6 +50,6 @@ public class TVProduct extends Product{
     }
     //end setters
     
-    
+    //NA KANW TO STRING
     
 }

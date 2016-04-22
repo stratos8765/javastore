@@ -96,7 +96,7 @@ public abstract class Product {
             
        public String toString()
    {
-       str= "name:" + name + "details:" + details + "code:" + code + "price:" + price;
+       str= "name:" + name +"\n"+ "details:" + details +"\n"+ "code:" + code +"\n"+ "price:" + price+"\n";
        
       return str;
    }

@@ -66,7 +66,7 @@ public class Color {
       
       public String toString()
       {
-       str="Red:"+red+"Green:"+green+"Blue:"+blue;
+       str="Red:"+red+"\n"+"Green:"+green+"\n"+"Blue:"+blue+"\n";
        return str;
        
       }

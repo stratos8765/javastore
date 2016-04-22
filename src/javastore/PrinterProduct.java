@@ -86,7 +86,7 @@ public class PrinterProduct extends Product{
     {
         String str="";
         str=super.toString();
-        str=str+"Type:"+this.type+"Paper Type:"+this.papertype+"Use:"+this.use+"Connection:"+this.connection;
+        str=str+"Type:"+this.type+"\n"+"Paper Type:"+this.papertype+"\n"+"Use:"+this.use+"\n"+"Connection:"+this.connection+"\n";
         
         return str;
     }

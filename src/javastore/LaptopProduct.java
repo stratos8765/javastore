@@ -101,7 +101,7 @@ public class LaptopProduct extends Product {
     {
        String str="";
        str=super.toString();
-       str=str+" Cd Rom:"+cdrom+" Graphics Card:"+graphicscard+" Processor:"+processor+" Ram:"+ram+" SSD:"+ssd;
+       str=str+" Cd Rom:"+cdrom+"\n"+" Graphics Card:"+graphicscard+"\n"+" Processor:"+processor+"\n"+" Ram:"+ram+"\n"+" SSD:"+ssd+"\n";
        
        return str;
        
