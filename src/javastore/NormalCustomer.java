@@ -14,12 +14,16 @@ public class NormalCustomer extends Customer
 
         private String fullname;
         private int idnumber;
+        private float fpa;
+        
 //constructors
     public NormalCustomer() 
     {
         super();
         this.fullname="";
         this.idnumber=0;
+        this.fpa=23/100;
+        
         
     }
 
@@ -27,6 +31,8 @@ public class NormalCustomer extends Customer
         super(address, telnumber, afm, username, password);
         this.fullname = fullname;
         this.idnumber = idnumber;
+        this.fpa=23/100;
+        
     }
     //end constructors
 
