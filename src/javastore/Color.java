@@ -30,34 +30,34 @@ public class Color {
    
    }
    //setters
-   public void SetGreen(int green)
+   public void setGreen(int green)
    {
        this.green=green;
        
    }
-      public void SetRed(int red)
+      public void setRed(int red)
    {
        this.red=red;
        
    }
-         public void SetBlue(int blue)
+         public void setBlue(int blue)
    {
        this.blue=blue;
        
    }
          //end setters
          //getters
-  public int GetGreen()
+  public int getGreen()
   {
       return this.green;
       
   }
-    public int GetBlue()
+    public int getBlue()
   {
       return this.blue;
       
   }
-      public int GetRed()
+      public int getRed()
   {
       return this.red;
       

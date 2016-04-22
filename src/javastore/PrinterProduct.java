@@ -37,23 +37,23 @@ public class PrinterProduct extends Product{
     }
     //end constructors
     //setters
-    public void SetType(String type)
+    public void setType(String type)
     {
         this.type=type;
         
     }
     
-    public void SetPaperType(String papertype)
+    public void setPaperType(String papertype)
     {
         this.papertype=papertype;
         
     }
-    public void SetUse(String use)
+    public void setUse(String use)
     {
         this.use=use;
         
     }
-    public void SetConnection(String connection)
+    public void setConnection(String connection)
     {
         this.connection=connection;
         
@@ -61,22 +61,22 @@ public class PrinterProduct extends Product{
     //end setters
     //getters
     
-    public String GetType()
+    public String getType()
             {
                 return this.type;
                 
             }
-    public String GetPaperType()
+    public String getPaperType()
     {
         return this.papertype;
         
     }
-    public String GetUse()
+    public String getUse()
     {
         return this.use;
         
     }
-    public String GetConnection()
+    public String getConnection()
     {
         return this.connection;
         

@@ -44,56 +44,56 @@ public class ComputerProduct extends Product{
     //end constructores
     
     //setters
-    public void SetProcessor(String processor)
+    public void setProcessor(String processor)
     {
         this.processor=processor;
         
     }
-        public void SetRam(String ram)
+        public void setRam(String ram)
     {
         this.ram=ram;
         
     }
-                public void SetGraphicsCard(String graphicscard)
+                public void setGraphicsCard(String graphicscard)
     {
         this.graphicscard=graphicscard;
         
         
     }
-    public void SetMonitor(String monitor)
+    public void setMonitor(String monitor)
     {
         this.monitor=monitor;
         
         
     }
-    public void SetOs(String os)
+    public void setOs(String os)
         {
         this.os=os;
         
         }
 //end setters
                                 //getters
-                                public String GetProcessor()
+                                public String getProcessor()
                                 {
                                     return this.processor;
                                     
                                 }
-                                 public String GetRam()
+                                 public String getRam()
                                     {
                                     return this.ram;
                                     
                                     }
-                                public String GetOs()
+                                public String getOs()
                                  {
                                     return this.os;
                                     
                                   }
-                                public String GetMonitor()
+                                public String getMonitor()
                                   {
                                     return this.monitor;
                                     
                                   }
-                                public String GetGraphicsCard()
+                                public String getGraphicsCard()
                                  {
                                     return this.graphicscard;
                                     

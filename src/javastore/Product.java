@@ -40,26 +40,26 @@ public abstract class Product {
     }
     
     //setters
-    public void SetName(String name)
+    public void setName(String name)
     {
         this.name=name;
     }
-    public void SetDetails(String details)
+    public void setDetails(String details)
     {
         this.details=details;
         
     }
-    public void SetCode(int code)
+    public void setCode(int code)
     {
         this.code=code;
         
     }
-    public void SetPrice(float price)
+    public void setPrice(float price)
     {
         this.price=price;
         
     }
-    public void SetImages(Image[] images)
+    public void setImages(Image[] images)
     {
         this.images=images;
         
@@ -67,27 +67,27 @@ public abstract class Product {
     //end setters
     
     //getters
-    public String GetName()
+    public String getName()
     {
         return this.name;
         
     }
-      public String GetDetails()
+      public String getDetails()
     {
         return this.details;
         
     }
-        public int GetCode()
+        public int getCode()
     {
         return this.code;
         
     }
-          public float GetPrice()
+          public float getPrice()
     {
         return this.price;
         
     }
-            public Image[] GetImages()
+            public Image[] getImages()
     {
         return this.images;
         

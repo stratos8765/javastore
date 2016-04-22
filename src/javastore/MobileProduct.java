@@ -45,64 +45,64 @@ public class MobileProduct extends Product{
     }
     //end constructores
     //setters
-    public void SetOs(String os)
+    public void setOs(String os)
     {
         this.os = os;
         
     }
-    public void SetMonitor(String monitor)
+    public void setMonitor(String monitor)
     {
         this.monitor = monitor;
         
     }
-    public void SetProcessor(String processor)
+    public void setProcessor(String processor)
     {
         this.processor = processor;
         
     }
-    public void SetCamera(String camera)
+    public void setCamera(String camera)
     {
         this.camera = camera;
         
     }
-    public void SetWifi(String wifi)
+    public void setWifi(String wifi)
     {
         this.wifi = wifi;
         
     }
-    public void SetColour(Color colour)
+    public void setColour(Color colour)
     {
         this.colour = colour;
         
     }
     //end setters
     //getters
-    public String GetOs()
+    public String getOs()
     {
         return this.os;
         
     }
-    public String GetMonitor()
+    public String getMonitor()
     {
         return this.monitor;
         
     }
-    public String GetProcessor()
+    public String getProcessor()
     {
         return this.processor;
         
     }
-    public String GetCamera()
+    public String getCamera()
     {
         return this.camera;
         
     }
-    public String GetWifi()
+    public String getWifi()
     {
         return this.wifi;
         
     }
-    public Color GetColour()
+    public Color getColour()
     {
         return this.colour;
         

@@ -44,58 +44,66 @@ public class LaptopProduct extends Product {
     }
     //end constructors
     //setters
-    public void SetProcessor(String processor)
+    public void setProcessor(String processor)
     {
         this.processor=processor;
        
     }
-    public void SetSsd(String ssd)
+    public void setSsd(String ssd)
     {
         this.ssd=ssd;
        
     }
-    public void SetRam(String ram)
+    public void setRam(String ram)
     {
         this.ram=ram;
        
     }
-    public void SetCdrom(String cdrom)
+    public void setCdrom(String cdrom)
     {
         this.cdrom=cdrom;
        
     }
-    public void SetGraphicsCard(String graphicscard)
+    public void setGraphicsCard(String graphicscard)
     {
         this.graphicscard=graphicscard;
        
     }
     //end setters
     //getters
-    public String GetCdrom()
+    public String getCdrom()
     {
         return this.cdrom;
         
     }
-    public String GetGraphicsCard()
+    public String getGraphicsCard()
     {
         return this.graphicscard;
         
     }
-    public String GetProcessor()
+    public String getProcessor()
     {
         return this.processor;
         
     }
-    public String GetRam()
+    public String getRam()
     {
         return this.ram;
         
     }
-    public String GetSsd()
+    public String getSsd()
     {
         return this.ssd;
         
     }
     //end getters
-    
+    public String toString()
+    {
+       String str="";
+       str=super.toString();
+       str=str+" Cd Rom:"+cdrom+" Graphics Card:"+graphicscard+" Processor:"+processor+" Ram:"+ram+" SSD:"+ssd;
+       
+       return str;
+       
+    }
 }
