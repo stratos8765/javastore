@@ -75,10 +75,18 @@ public class CameraProduct extends Product {
      return this.exposure;
      
  }
- public int Fps()
+ public int GetFps()
  {
      return this.fps;
      
  }
  //end getters
+ public String toString()
+ {
+    String str= super.toString();
+    str=str+"Megapixels:"+megapixels+"ISO:"+iso+"Exposure:"+exposure+"FPS:"+fps;
+    
+    return str;
+    
+ }
 }
