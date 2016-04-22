@@ -57,7 +57,14 @@ public class NormalCustomer extends Customer
     //end getters
     
     
-    
+        public String toString()
+    {
+        String str="";
+        str=str+super.toString();
+        str=str+"Full Name:"+fullname+"Id number:"+idnumber+"FPA:"+fpa;
+        return str;
+        
+    }
     
     
     

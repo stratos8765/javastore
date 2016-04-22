@@ -46,6 +46,12 @@ public abstract class User {
         this.password = password;
     }
     //end setters
-    
+    public String toString()    
+    {
+        String str="";
+        str=str+"Username:"+username+"Password:"+password;
+        return str;
+        
+    }
     
 }

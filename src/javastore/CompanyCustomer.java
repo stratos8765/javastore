@@ -82,5 +82,12 @@ public class CompanyCustomer extends Customer
         this.discount = discount;
     }
     //end setters
-        
+        public String toString()
+    {
+        String str="";
+        str=str+super.toString();
+        str=str+"Epwnymia:"+epwnymia+"Ypefthinos Epikoinwnias:"+ypefep+"FPA:"+fpa+"Discount:"+discount;
+        return str;
+
+    }
 }
