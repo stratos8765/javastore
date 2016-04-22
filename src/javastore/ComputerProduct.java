@@ -18,7 +18,6 @@ public class ComputerProduct extends Product{
     private String graphicscard;
     private String monitor;
     private String os;
-    private String str;
     
     
     //Constructores
@@ -102,7 +101,7 @@ public class ComputerProduct extends Product{
                                 //end getters
     public String toString()
    {
-       this.str =super.toString();
+       String str =  super.toString();
        str = str+"Processor:"+processor + "Ram:" + ram +"Graphics Card:" + graphicscard + "Monitor:" + monitor + "OS:"  + os;      
        
        return str;
