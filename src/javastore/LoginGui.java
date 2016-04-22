@@ -4,14 +4,20 @@
  * and open the template in the editor.
  */
 package javastore;
+import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.beans.Statement;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.swing.*;
 
@@ -29,7 +35,7 @@ public class LoginGui extends JFrame
     oos.writeObject(ish);
     oos.close();
 }
-    public LoginGui()
+    public LoginGui() throws SQLException
     {
         super("Login");
         super.setLayout(new BorderLayout());
@@ -67,35 +73,27 @@ public class LoginGui extends JFrame
         super.add(panellogin,BorderLayout.CENTER);
         super.setVisible(true);
         super.setSize(250, 250);
-        
-        
-      
-         try{
-             
-    
-         FileOutputStream out = new FileOutputStream("test.txt");
-         ObjectOutputStream oout = new ObjectOutputStream(out);
+        String url = "jdbc:mysql://localhost:3306/test";
+String username = "root";
+String password = "";
 
-         // write something in the file
-         oout.writeObject(admins[0].toString()+"\n"+"============");
-            oout.close();
-          ObjectInputStream ois =
-                 new ObjectInputStream(new FileInputStream("test.txt"));
+System.out.println("Connecting database...");
 
-         // read and print what we wrote before
-         System.out.println("" + (String) ois.readObject());
-         System.out.println("" + ois.readObject());
-
-         }
-         catch(Exception ex)
-         {
-          
-         }
-        loginbutton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                   
-            }
-        });
+MysqlDataSource dataSource = new MysqlDataSource();
+dataSource.setUser("root");
+dataSource.setPassword("");
+dataSource.setServerName("localhost");
+Connection conn = dataSource.getConnection();
+java.sql.Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT * FROM mysql.user");
         
+if(rs.next()) { 
+ String id = rs.getString("Host"); 
+ String str1 = rs.getString("User");
+ System.out.println(str1);
+}
+        
+
+
     }
 }
