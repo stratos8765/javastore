@@ -4,13 +4,19 @@
  * and open the template in the editor.
  */
 package javastore;
-import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
-import java.sql.*;
 
+import java.beans.Statement;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
 
+/**
+ *
+ * @author 3oxic
+ */
 public class dbconnect {
-MysqlDataSource dataSource = new MysqlDataSource();
-dataSource.setUser("scott");
-dataSource.setPassword("tiger");
-dataSource.setServerName("myDBHost.example.org");
+    Connection conn = null;
+   Statement stmt = null;
+   
+
 }
