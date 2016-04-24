@@ -21,17 +21,7 @@ public class JavaStore {
         boolean result;
         
         LoginGui Login=new LoginGui();
-        dbmanage example = new dbmanage();
-     example.executeQuery("SELECT * FROM user");
-     result=example.getResult();
-     
-        System.out.println(result);
-        //example.getResult();
         
-
-        
-        
-
     }
     
 }

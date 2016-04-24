@@ -59,6 +59,8 @@ public class dbmanage {
         while(rs.next()){
          String first = rs.getString("User"); 
          System.out.print(", First: " + first); 
+         result=true;
+         
       }
     }
     catch(SQLException ex)
