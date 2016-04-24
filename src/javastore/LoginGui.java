@@ -5,9 +5,6 @@
  */
 package javastore;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.beans.Statement;
 import javax.swing.*;
 
 /**
@@ -51,7 +48,7 @@ public class LoginGui extends JFrame
         c.gridy++;
         
         panellogin.add(loginbutton,c);
-        
+   
         super.add(panellogin,BorderLayout.CENTER);
         super.setVisible(true);
         super.setSize(250, 250);

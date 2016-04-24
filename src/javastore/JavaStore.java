@@ -18,8 +18,17 @@ public class JavaStore {
      */
     public static void main(String[] args) 
     {
+        boolean result;
+        
         LoginGui Login=new LoginGui();
-        FirstExample example = new FirstExample();
+        dbmanage example = new dbmanage();
+     example.executeQuery("SELECT * FROM user");
+     result=example.getResult();
+     
+        System.out.println(result);
+        //example.getResult();
+        
+
         
         
 
