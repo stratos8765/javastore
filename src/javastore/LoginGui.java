@@ -48,14 +48,10 @@ public class LoginGui extends JFrame
         users.getAdminsFromDb();
         users.getCompanyCustomersFromDb();
         users.getNormalCustomersFromDb();
-        ArrayList<Admin> admins = new ArrayList<Admin>();
  
-       
-        
-        
         ArrayList<NormalCustomer> ncustomers = new ArrayList<NormalCustomer>();
         ArrayList<CompanyCustomer> ccustomers = new ArrayList<CompanyCustomer>();
-        admins=users.getAdmins();
+        
         ncustomers=users.getNcustomers();
         ccustomers=users.getCcustomers();
         
@@ -64,7 +60,7 @@ public class LoginGui extends JFrame
             public void actionPerformed(ActionEvent e)
             {
                 String s = (String) cb.getSelectedItem();//get the selected item
-                if(s=="Admin")
+                if(s.equals("Admin"))
                 {
               //http://stackoverflow.com/questions/12414596/how-to-check-if-a-particular-database-in-mysql-already-exists-using-java
                 }
@@ -72,6 +68,32 @@ public class LoginGui extends JFrame
             }
         });   
         loginbutton.setPreferredSize(new Dimension(80, 30));
+        loginbutton.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+                ArrayList<Admin> admins = new ArrayList<Admin>();
+                adminal users = new adminal();
+                users.getAdminsFromDb();
+                admins=users.getAdmins();
+                
+                String s = (String) cb.getSelectedItem();//get the selected item
+                if(s=="Admin")
+                {
+                    String usernamefield=usernametext.getText();
+                    String passwordfield=passwordtext.getText();
+                    for (int i=0;i<admins.size();i++) {
+                       String returnusername = admins.get(i).getUsername();
+
+                       
+                                
+                                    
+                                
+                    }
+                }
+                
+            }
+            
+        }
+        );
         
         panellogin.setLayout(new GridBagLayout());
         c.gridx = 0;

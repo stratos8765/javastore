@@ -20,8 +20,6 @@ public class dbmanage {
       Class.forName("com.mysql.jdbc.Driver");
       conn = DriverManager.getConnection(DB_URL,USER,PASS);
       stmt = conn.createStatement();
-      System.out.println("connected");
-     
    }catch(SQLException se){
       
       se.printStackTrace();
