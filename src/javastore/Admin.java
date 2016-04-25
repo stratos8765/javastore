@@ -5,6 +5,11 @@
  */
 package javastore;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+
 /**
  *
  * @author 3oxic
@@ -12,10 +17,16 @@ package javastore;
 public class Admin extends User
 {
 
+    
+    public Admin() {
+        super.setUsername("");
+        super.setPassword("");
+        
+    }
     public Admin(String username, String password) {
         super(username, password);
     }
-    
-    
-    
+
 }
+
+

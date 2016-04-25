@@ -5,11 +5,11 @@ import java.sql.*;
 public class dbmanage {
    // JDBC driver name and database URL
    private String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
-   private String DB_URL = "jdbc:mysql://localhost/mysql";
+   private String DB_URL = "jdbc:mysql://localhost/javaproject4291";
 
    //  Database credentials
-   private String USER = "root";
-   private String PASS = "";
+   private String USER = "java";
+   private String PASS = "4291";
    private ResultSet rs;
    Connection conn;
    Statement stmt;
@@ -31,7 +31,7 @@ public class dbmanage {
    }
   
 }
-   public boolean executeQuery(String sqlquery)
+   public ResultSet executeQuery(String sqlquery)
    {
       boolean result=false;
       
@@ -47,7 +47,7 @@ public class dbmanage {
       {
          ex.printStackTrace(); 
       }
-      return result;
+      return rs;
       
    }
    public boolean getResult()
@@ -57,8 +57,8 @@ public class dbmanage {
     try
     {
         while(rs.next()){
-         String first = rs.getString("User"); 
-         System.out.print(", First: " + first); 
+         String first = rs.getString("username"); 
+         System.out.print("Username: " + first+"\n"); 
          result=true;
          
       }

@@ -5,6 +5,8 @@
  */
 package javastore;
 import java.awt.*;
+import java.sql.ResultSet;
+import java.util.ArrayList;
 import javax.swing.*;
 
 /**
@@ -52,11 +54,14 @@ public class LoginGui extends JFrame
         super.add(panellogin,BorderLayout.CENTER);
         super.setVisible(true);
         super.setSize(250, 250);
-        dbmanage db = new dbmanage();
-        db.executeQuery("SELECT * FROM user");
-        db.getResult();
-        db.closeConnection();        
+        adminal users = new adminal();
+         
 
 
     }
+
+   
+   
+
+    
 }

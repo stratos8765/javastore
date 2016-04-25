@@ -5,22 +5,12 @@
  */
 package javastore;
 
-
-
 /**
  *
  * @author 3oxic
  */
-public class JavaStore {
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) 
-    {
-        
-        LoginGui Login=new LoginGui();
-        
-    }
+public interface dbtools {
+    void setData();
+    void getData();
     
 }
