@@ -5,6 +5,8 @@
  */
 package javastore;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import javax.swing.*;
@@ -18,6 +20,7 @@ public class LoginGui extends JFrame
     
     public LoginGui()
     {
+        
         super("Login");
         super.setLayout(new BorderLayout());
         GridBagConstraints c = new GridBagConstraints();
@@ -31,6 +34,43 @@ public class LoginGui extends JFrame
         usernametext.setFont(f1);
         JPanel panellogin = new JPanel();
         JButton loginbutton = new JButton("Login");
+         String[] typeofuser = {
+	 "Admin",
+	 "Customer",
+	 "Company Customer",
+	 };
+        
+        JComboBox cb = new JComboBox(typeofuser);
+        cb.setEditable(false);
+        cb.setSelectedIndex(1);
+        cb.setPreferredSize(new Dimension(90, 25));
+       adminal users = new adminal();
+        users.getAdminsFromDb();
+        users.getCompanyCustomersFromDb();
+        users.getNormalCustomersFromDb();
+        ArrayList<Admin> admins = new ArrayList<Admin>();
+ 
+       
+        
+        
+        ArrayList<NormalCustomer> ncustomers = new ArrayList<NormalCustomer>();
+        ArrayList<CompanyCustomer> ccustomers = new ArrayList<CompanyCustomer>();
+        admins=users.getAdmins();
+        ncustomers=users.getNcustomers();
+        ccustomers=users.getCcustomers();
+        
+        cb.addActionListener(new ActionListener() {
+            
+            public void actionPerformed(ActionEvent e)
+            {
+                String s = (String) cb.getSelectedItem();//get the selected item
+                if(s=="Admin")
+                {
+              
+                }
+            
+            }
+        });   
         loginbutton.setPreferredSize(new Dimension(80, 30));
         
         panellogin.setLayout(new GridBagLayout());
@@ -48,14 +88,14 @@ public class LoginGui extends JFrame
         
         panellogin.add(passwordtext,c);
         c.gridy++;
-        
+        panellogin.add(cb,c);
+        c.gridy++;
         panellogin.add(loginbutton,c);
    
         super.add(panellogin,BorderLayout.CENTER);
         super.setVisible(true);
         super.setSize(250, 250);
-        adminal users = new adminal();
-         
+        
 
 
     }
