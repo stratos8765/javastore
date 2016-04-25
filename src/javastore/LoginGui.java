@@ -66,7 +66,7 @@ public class LoginGui extends JFrame
                 String s = (String) cb.getSelectedItem();//get the selected item
                 if(s=="Admin")
                 {
-              
+              //http://stackoverflow.com/questions/12414596/how-to-check-if-a-particular-database-in-mysql-already-exists-using-java
                 }
             
             }
