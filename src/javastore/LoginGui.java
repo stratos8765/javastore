@@ -82,7 +82,12 @@ public class LoginGui extends JFrame
                     String passwordfield=passwordtext.getText();
                     for (int i=0;i<admins.size();i++) {
                        String returnusername = admins.get(i).getUsername();
-
+                       String returnpassword = admins.get(i).getPassword();
+                       
+                       if(usernamefield.equals(returnusername) && passwordfield.equals(returnpassword))
+                       {
+                          System.out.println("Hola Bang!");
+                       }
                        
                                 
                                     
