@@ -70,29 +70,48 @@ public class LoginGui extends JFrame
         loginbutton.setPreferredSize(new Dimension(80, 30));
         loginbutton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
-                ArrayList<Admin> admins = new ArrayList<Admin>();
-                adminal users = new adminal();
-                users.getAdminsFromDb();
-                admins=users.getAdmins();
                 
+                adminal users = new adminal();
+                String usernamefield=usernametext.getText();
+                String passwordfield=passwordtext.getText();
                 String s = (String) cb.getSelectedItem();//get the selected item
                 if(s=="Admin")
                 {
-                    String usernamefield=usernametext.getText();
-                    String passwordfield=passwordtext.getText();
+                ArrayList<Admin> admins = new ArrayList<Admin>();
+                
+                users.getAdminsFromDb();
+                admins=users.getAdmins();
+                    
+
                     for (int i=0;i<admins.size();i++) {
                        String returnusername = admins.get(i).getUsername();
                        String returnpassword = admins.get(i).getPassword();
                        
                        if(usernamefield.equals(returnusername) && passwordfield.equals(returnpassword))
                        {
-                          System.out.println("Hola Bang!");
+                           //System.out.println("it works");
+                          //deikse admin gui
                        }
                        
                                 
                                     
                                 
                     }
+                }
+                if(s=="Customer")
+                {
+                   ArrayList<NormalCustomer> ncustomers = new ArrayList<NormalCustomer>();
+                   users.getNormalCustomersFromDb();
+                   ncustomers=users.getNcustomers();
+                   for(NormalCustomer customer:ncustomers)
+                   {
+                      String returnusername=customer.getUsername();
+                      String returnpassword=customer.getPassword();
+                      if(usernamefield.equals(returnusername) && passwordfield.equals(returnpassword))
+                      {
+                          //show customergui.
+                      }
+                   }
                 }
                 
             }
