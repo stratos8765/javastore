@@ -113,6 +113,21 @@ public class LoginGui extends JFrame
                       }
                    }
                 }
+                if(s=="Company Customer")
+                {
+                    ArrayList<CompanyCustomer> ccustomers = new ArrayList<CompanyCustomer>();
+                   users.getCompanyCustomersFromDb();
+                   ccustomers=users.getCcustomers();
+                   for(CompanyCustomer customer:ccustomers)
+                   {
+                      String returnusername=customer.getUsername();
+                      String returnpassword=customer.getPassword();
+                      if(usernamefield.equals(returnusername) && passwordfield.equals(returnpassword))
+                      {
+                         //show company customer gui
+                      }
+                   }
+                }
                 
             }
             
