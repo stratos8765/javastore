@@ -109,7 +109,10 @@ public class LoginGui extends JFrame
                       String returnpassword=customer.getPassword();
                       if(usernamefield.equals(returnusername) && passwordfield.equals(returnpassword))
                       {
-                          //show customergui.
+                          NormalCustomerGui ncustomergui = new NormalCustomerGui();
+                          closeThis();
+                          
+                          
                       }
                    }
                 }
@@ -160,7 +163,10 @@ public class LoginGui extends JFrame
 
 
     }
-
+public void closeThis()
+{
+    super.dispose();
+}
    
    
 
