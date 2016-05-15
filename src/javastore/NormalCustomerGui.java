@@ -16,6 +16,7 @@ import javax.swing.JFrame;
 import javax.*;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 
 /**
@@ -43,40 +44,62 @@ public class NormalCustomerGui extends JFrame {
        GridBagConstraints c = new GridBagConstraints();
        c.gridy=0;
        c.gridx=0;
-       
-       
-        c.weighty = 1.0;
-        c.weightx = 1.0;
-        c.anchor =GridBagConstraints.FIRST_LINE_START;
+       c.weighty = 1.0;
+       c.weightx = 1.0;
+       c.anchor =GridBagConstraints.FIRST_LINE_START;
         
        JLabel Computerp = new JLabel("Camera Products:");
-             this.add(Computerp,c);
+       this.add(Computerp,c);
        
        ArrayList<JLabel> productnames = new ArrayList<JLabel>();
        c.gridy++;
        c.insets = new Insets(1,1,1,1);
        c.insets.top = 1;
        c.insets.bottom = 1;
-       
+       ArrayList<JLabel> cpdnames = new ArrayList<JLabel>();
+       ArrayList<Float> cpdprices = new ArrayList<Float>();
+       ArrayList<JButton> cpdbuttonadd = new ArrayList<JButton>();
+       ArrayList<JButton> cpdbuttonremove = new ArrayList<JButton>();
        for(int i=0;i<cameraproducts.size();i++)
        {
-          JLabel pdname = new JLabel(cameraproducts.get(i).getName());
+           c.gridx=0;
+           
+          JLabel pdname = new JLabel("Name: "+cameraproducts.get(i).getName());
           this.add(pdname,c);
+          cpdnames.add(pdname);
+          c.gridx++;
+          JLabel pdprice = new JLabel("Price: " +String.valueOf(cameraproducts.get(i).getPrice()));
+          this.add(pdprice,c);
+          cpdprices.add(cameraproducts.get(i).getPrice());
+          c.gridx++;
+          JButton button = new JButton("+");
+          this.add(button,c);
+          cpdbuttonadd.add(button);
+          c.gridx++;
+          
+          JButton button2 = new JButton("-");
+          this.add(button2,c);
+          cpdbuttonremove.add(button2);
           c.gridy++;
            
        }
  
      
+c.gridx=0;
+c.weightx=1;
+c.weighty=1;
+
        
-       c.anchor =GridBagConstraints.LAST_LINE_START;
+       c.anchor = GridBagConstraints.LAST_LINE_START;
        JButton logoutbutton = new JButton("Logout "+customerusername);
        this.add(logoutbutton,c);
        logoutbutton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
-          closeThis();
+               closeThis();
           
             }
        });
+   c.gridx++;
    
              c.anchor= GridBagConstraints.LAST_LINE_END;
              JButton basketbutton = new JButton("Basket");
@@ -89,7 +112,19 @@ public class NormalCustomerGui extends JFrame {
           
                  }
               });
-             c.anchor = GridBagConstraints.FIRST_LINE_START;
+             
+             
+             JButton ohbutton = new JButton("Order History");
+             c.gridx++;
+             this.add(ohbutton,c);
+             basketbutton.addActionListener(new ActionListener()
+             {
+                public void actionPerformed(ActionEvent e) 
+                {
+         
+                 
+                 }
+              });
             }
     public void closeThis()
 {

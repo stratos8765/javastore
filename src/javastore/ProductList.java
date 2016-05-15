@@ -24,7 +24,7 @@ public class ProductList {
     public void getComputerProductsFromDB() {
         dbmanage db = new dbmanage();
         ResultSet rs;
-       rs=db.executeQuery("SELECT * FROM computerproducts");
+       rs=db.executeQuery("SELECT * FROM computerproducts ORDER BY name");
 
         try
     {
@@ -94,7 +94,7 @@ public class ProductList {
     public void getLaptopProductsFromDB() {
         dbmanage db = new dbmanage();
         ResultSet rs;
-       rs=db.executeQuery("SELECT * FROM laptopproducts");
+       rs=db.executeQuery("SELECT * FROM laptopproducts ORDER BY name");
 
         try
     {
@@ -128,7 +128,7 @@ public class ProductList {
         public void getMobileProductsFromDB() {
         dbmanage db = new dbmanage();
         ResultSet rs;
-       rs=db.executeQuery("SELECT * FROM mobileproducts");
+       rs=db.executeQuery("SELECT * FROM mobileproducts ORDER BY name");
 
         try
     {
@@ -161,7 +161,7 @@ public class ProductList {
                 public void getPrinterProductsFromDB() {
         dbmanage db = new dbmanage();
         ResultSet rs;
-       rs=db.executeQuery("SELECT * FROM printerproducts");
+       rs=db.executeQuery("SELECT * FROM printerproducts ORDER BY name");
 
         try
     {
@@ -192,7 +192,7 @@ public class ProductList {
     public void getTVProductsFromDB() {
         dbmanage db = new dbmanage();
         ResultSet rs;
-       rs=db.executeQuery("SELECT * FROM tvproducts");
+       rs=db.executeQuery("SELECT * FROM tvproducts ORDER BY name");
 
         try
     {
