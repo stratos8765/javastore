@@ -6,8 +6,16 @@
 package javastore;
 
 import java.awt.BorderLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.*;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 
 
 /**
@@ -15,13 +23,79 @@ import javax.*;
  * @author 3oxic
  */
 public class NormalCustomerGui extends JFrame {
-    public NormalCustomerGui()
+    String customerusername ="";
+    
+    public NormalCustomerGui(String customer)
     {
+        
+        
        super("Customer Options");
+       ArrayList<CameraProduct> cameraproducts = new ArrayList<CameraProduct>();
+       ProductList products = new ProductList();
+       products.getCameraProductsFromDB();
+       
+       cameraproducts = products.getCameraproducts();
+       this.customerusername=customer;
        this.setVisible(true);
-       this.setLayout(new BorderLayout());
+       this.setLayout(new GridBagLayout());
        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
        this.setSize(500, 500);
-    }
+       GridBagConstraints c = new GridBagConstraints();
+       c.gridy=0;
+       c.gridx=0;
+       
+       
+        c.weighty = 1.0;
+        c.weightx = 1.0;
+        c.anchor =GridBagConstraints.FIRST_LINE_START;
+        
+       JLabel Computerp = new JLabel("Camera Products:");
+             this.add(Computerp,c);
+       
+       ArrayList<JLabel> productnames = new ArrayList<JLabel>();
+       c.gridy++;
+       c.insets = new Insets(1,1,1,1);
+       c.insets.top = 1;
+       c.insets.bottom = 1;
+       
+       for(int i=0;i<cameraproducts.size();i++)
+       {
+          JLabel pdname = new JLabel(cameraproducts.get(i).getName());
+          this.add(pdname,c);
+          c.gridy++;
+           
+       }
+ 
+     
+       
+       c.anchor =GridBagConstraints.LAST_LINE_START;
+       JButton logoutbutton = new JButton("Logout "+customerusername);
+       this.add(logoutbutton,c);
+       logoutbutton.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+          closeThis();
+          
+            }
+       });
+   
+             c.anchor= GridBagConstraints.LAST_LINE_END;
+             JButton basketbutton = new JButton("Basket");
+             this.add(basketbutton,c);
+             basketbutton.addActionListener(new ActionListener()
+             {
+                public void actionPerformed(ActionEvent e) 
+                {
+         
+          
+                 }
+              });
+             c.anchor = GridBagConstraints.FIRST_LINE_START;
+            }
+    public void closeThis()
+{
+    super.dispose();
     
 }
+    }
+
+    

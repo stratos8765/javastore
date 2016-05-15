@@ -18,7 +18,7 @@ public class MobileProduct extends Product{
     private String processor;
     private String camera;
     private String wifi;
-    private Color colour = new Color();
+    private String colour ;
     
     //Constructores
     public MobileProduct()
@@ -29,10 +29,10 @@ public class MobileProduct extends Product{
         this.processor="";
         this.camera = "";
         this.wifi="";
-        this.colour= new Color();
+        this.colour= "";
         
     }
-    public MobileProduct(String name,String details,int code,float price,Image[] images,String os,String monitor,String processor,String camera,String wifi,Color colour)
+    public MobileProduct(String name,String details,int code,float price,Image[] images,String os,String monitor,String processor,String camera,String wifi,String colour)
     {
         super(name,details,code,price,images);
         this.os=os;
@@ -70,7 +70,7 @@ public class MobileProduct extends Product{
         this.wifi = wifi;
         
     }
-    public void setColour(Color colour)
+    public void setColour(String colour)
     {
         this.colour = colour;
         
@@ -102,7 +102,7 @@ public class MobileProduct extends Product{
         return this.wifi;
         
     }
-    public Color getColour()
+    public String getColour()
     {
         return this.colour;
         

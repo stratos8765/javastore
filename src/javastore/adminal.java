@@ -17,6 +17,7 @@ public class adminal {
     private ArrayList<Admin> admins = new ArrayList<Admin>();
     private ArrayList<NormalCustomer> ncustomers = new ArrayList<NormalCustomer>();
     private ArrayList<CompanyCustomer> ccustomers = new ArrayList<CompanyCustomer>();
+    
     //https://examples.javacodegeeks.com/core-java/util/arraylist/arraylist-in-java-example-how-to-use-arraylist/
 
     public adminal() {

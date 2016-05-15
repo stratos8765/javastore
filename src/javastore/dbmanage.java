@@ -5,11 +5,11 @@ import java.sql.*;
 public class dbmanage {
    // JDBC driver name and database URL
    private String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
-   private String DB_URL = "jdbc:mysql://localhost/javaproject4291";
+   private String DB_URL = "jdbc:mysql://localhost/javaproject";
 
    //  Database credentials
-   private String USER = "java";
-   private String PASS = "4291";
+   private String USER = "root";
+   private String PASS = "";
    private ResultSet rs;
    Connection conn;
    Statement stmt;

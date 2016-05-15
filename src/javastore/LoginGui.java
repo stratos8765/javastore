@@ -28,8 +28,8 @@ public class LoginGui extends JFrame
         
         JLabel usernamelabel=new JLabel("Username:");
         JLabel passwordlabel=new JLabel("Password:");
-        JTextField usernametext = new JTextField(10);
-        JPasswordField passwordtext = new JPasswordField(8);
+        final JTextField usernametext = new JTextField(10);
+        final JPasswordField passwordtext = new JPasswordField(8);
         Font f1 = usernametext.getFont().deriveFont(Font.PLAIN, 10f);
         usernametext.setFont(f1);
         JPanel panellogin = new JPanel();
@@ -40,7 +40,7 @@ public class LoginGui extends JFrame
 	 "Company Customer",
 	 };
         
-        JComboBox cb = new JComboBox(typeofuser);
+        final JComboBox cb = new JComboBox(typeofuser);
         cb.setEditable(false);
         cb.setSelectedIndex(1);
         cb.setPreferredSize(new Dimension(90, 25));
@@ -109,7 +109,7 @@ public class LoginGui extends JFrame
                       String returnpassword=customer.getPassword();
                       if(usernamefield.equals(returnusername) && passwordfield.equals(returnpassword))
                       {
-                          NormalCustomerGui ncustomergui = new NormalCustomerGui();
+                          NormalCustomerGui ncustomergui = new NormalCustomerGui(returnusername);
                           closeThis();
                           
                           
