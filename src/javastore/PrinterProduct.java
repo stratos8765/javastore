@@ -6,6 +6,7 @@
 package javastore;
 
 import java.awt.Image;
+import java.util.ArrayList;
 
 /**
  *
@@ -26,7 +27,7 @@ public class PrinterProduct extends Product{
         this.connection="";
         
     }
-    public PrinterProduct(String name,String details,int code,float price,Image[] images,String type,String papertype,String use,String connection)
+    public PrinterProduct(String name,String details,int code,float price,ArrayList<Image> images,String type,String papertype,String use,String connection)
     {
         super(name,details,code,price,images);
         this.type=type;

@@ -6,6 +6,7 @@
 package javastore;
 
 import java.awt.Image;
+import java.util.ArrayList;
 
 /**
  *
@@ -24,7 +25,7 @@ public class TVProduct extends Product{
         
     }
 
-    public TVProduct(int inches, String hd, String name, String details, int code, float price, Image[] images) 
+    public TVProduct(int inches, String hd, String name, String details, int code, float price, ArrayList<Image> images) 
     {
         super(name, details, code, price, images);
         this.inches = inches;

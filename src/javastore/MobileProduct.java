@@ -6,6 +6,7 @@
 package javastore;
 
 import java.awt.Image;
+import java.util.ArrayList;
 
 /**
  *
@@ -32,7 +33,7 @@ public class MobileProduct extends Product{
         this.colour= "";
         
     }
-    public MobileProduct(String name,String details,int code,float price,Image[] images,String os,String monitor,String processor,String camera,String wifi,String colour)
+    public MobileProduct(String name,String details,int code,float price,ArrayList<Image> images,String os,String monitor,String processor,String camera,String wifi,String colour)
     {
         super(name,details,code,price,images);
         this.os=os;

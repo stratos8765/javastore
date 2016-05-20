@@ -6,6 +6,7 @@
 package javastore;
 
 import java.awt.Image;
+import java.util.ArrayList;
 
 /**
  *
@@ -26,7 +27,7 @@ public class CameraProduct extends Product {
      this.fps=0;
      
  }
- public CameraProduct(String name,String details,int code,float price,Image[] images,int megapixels,int iso,int exposure,int fps)
+ public CameraProduct(String name,String details,int code,float price,ArrayList<Image> images,int megapixels,int iso,int exposure,int fps)
  {
   super(name,details,code,price,images);
   this.megapixels=megapixels;

@@ -2,6 +2,7 @@ package javastore;
 
 
 import java.awt.Image;
+import java.util.ArrayList;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -32,7 +33,7 @@ public class LaptopProduct extends Product {
         
     }
     
-    public LaptopProduct(String name,String details,int code,float price,Image[] images,String processor,String graphicscard,String ssd,String cdrom,String ram)
+    public LaptopProduct(String name,String details,int code,float price,ArrayList<Image> images,String processor,String graphicscard,String ssd,String cdrom,String ram)
     {
         super(name,details,code,price,images);
         this.processor=processor;

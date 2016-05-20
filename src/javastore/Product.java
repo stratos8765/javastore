@@ -6,6 +6,7 @@
 package javastore;
 
 import java.awt.Image;
+import java.util.ArrayList;
 
 /**
  *
@@ -18,7 +19,7 @@ public abstract class Product {
     private float price;
     private String str;
     
-    private Image[] images = new Image[20];
+    private ArrayList<Image> images = new ArrayList<Image>();
     
         //Constructors
     public Product()
@@ -29,7 +30,7 @@ public abstract class Product {
         this.price = 0;
         
     }
-    public Product(String name,String details,int code,float price,Image[] images)
+    public Product(String name,String details,int code,float price,ArrayList<Image> images)
     {
         this.name=name;
         this.details=details;
@@ -59,7 +60,7 @@ public abstract class Product {
         this.price=price;
         
     }
-    public void setImages(Image[] images)
+    public void setImages(ArrayList<Image> images)
     {
         this.images=images;
         
@@ -87,7 +88,7 @@ public abstract class Product {
         return this.price;
         
     }
-            public Image[] getImages()
+            public ArrayList<Image> getImages()
     {
         return this.images;
         

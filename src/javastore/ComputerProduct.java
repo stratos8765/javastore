@@ -6,6 +6,7 @@
 package javastore;
 
 import java.awt.Image;
+import java.util.ArrayList;
 
 /**
  *
@@ -31,7 +32,7 @@ public class ComputerProduct extends Product{
         this.os="";
         
     }
-    public ComputerProduct(String name,String details,int code,float price,Image[] images,String processor,String ram,String graphicscard,String monitor,String os)
+    public ComputerProduct(String name,String details,int code,float price,ArrayList<Image> images,String processor,String ram,String graphicscard,String monitor,String os)
     {
         super(name,details,code,price,images);
         this.processor=processor;
