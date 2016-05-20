@@ -315,7 +315,30 @@ public class NormalCustomerGui extends JFrame {
           c2.gridy++;   
        }
         
-         for(i=0;i<laptoppdbuttonremove.size();i++)
+                     for(i=0;i<laptoppdbuttonadd.size();i++)
+        {   laptoppdbuttonadd.get(i).putClientProperty( "counter", i );
+            laptoppdbuttonadd.get(i).putClientProperty( "yo", laptoppqtys);
+            
+            laptoppdbuttonadd.get(i).addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+               ArrayList<JLabel> qt = new ArrayList<JLabel>();
+               int i =(Integer)((JButton)e.getSource()).getClientProperty( "counter" );
+               
+               qt =(ArrayList<JLabel>)((JButton)e.getSource()).getClientProperty( "yo" );
+               int getvalue = Integer.parseInt(qt.get(i).getText());
+               getvalue++;
+               
+               
+               
+               qt.get(i).setText(String.valueOf(getvalue));
+              
+          
+            }
+
+       });
+        }
+                     
+                              for(i=0;i<laptoppdbuttonremove.size();i++)
         {   laptoppdbuttonremove.get(i).putClientProperty( "counter", i );
             laptoppdbuttonremove.get(i).putClientProperty( "yo", laptoppqtys);
             
@@ -384,6 +407,57 @@ public class NormalCustomerGui extends JFrame {
           mobilepdbuttonmore.add(morebutton);
           c2.gridy++;   
        }
+         
+                     
+                                          for(i=0;i<mobilepdbuttonadd.size();i++)
+        {   mobilepdbuttonadd.get(i).putClientProperty( "counter", i );
+            mobilepdbuttonadd.get(i).putClientProperty( "yo", mobilepqtys);
+            
+            mobilepdbuttonadd.get(i).addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+               ArrayList<JLabel> qt = new ArrayList<JLabel>();
+               int i =(Integer)((JButton)e.getSource()).getClientProperty( "counter" );
+               
+               qt =(ArrayList<JLabel>)((JButton)e.getSource()).getClientProperty( "yo" );
+               int getvalue = Integer.parseInt(qt.get(i).getText());
+               getvalue++;
+               
+               
+               
+               qt.get(i).setText(String.valueOf(getvalue));
+              
+          
+            }
+
+       });
+        }
+                     
+                              for(i=0;i<mobilepdbuttonremove.size();i++)
+        {   mobilepdbuttonremove.get(i).putClientProperty( "counter", i );
+            mobilepdbuttonremove.get(i).putClientProperty( "yo", mobilepqtys);
+            
+            mobilepdbuttonremove.get(i).addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+               ArrayList<JLabel> qt = new ArrayList<JLabel>();
+               int i =(Integer)((JButton)e.getSource()).getClientProperty( "counter" );
+               
+               qt =(ArrayList<JLabel>)((JButton)e.getSource()).getClientProperty( "yo" );
+               int getvalue = Integer.parseInt(qt.get(i).getText());
+               getvalue--;
+               
+               
+               
+               qt.get(i).setText(String.valueOf(getvalue));
+              
+          
+            }
+
+       });
+        }
+             
+                     
+                     
+                     
                      this.add(mobileproductspanel,c);
       
        
@@ -435,6 +509,51 @@ public class NormalCustomerGui extends JFrame {
           c2.gridy++;   
        }
                      c.gridx++;
+                                for(i=0;i<printerpdbuttonadd.size();i++)
+        {   printerpdbuttonadd.get(i).putClientProperty( "counter", i );
+            printerpdbuttonadd.get(i).putClientProperty( "yo", printerpqtys);
+            
+            printerpdbuttonadd.get(i).addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+               ArrayList<JLabel> qt = new ArrayList<JLabel>();
+               int i =(Integer)((JButton)e.getSource()).getClientProperty( "counter" );
+               
+               qt =(ArrayList<JLabel>)((JButton)e.getSource()).getClientProperty( "yo" );
+               int getvalue = Integer.parseInt(qt.get(i).getText());
+               getvalue++;
+               
+               
+               
+               qt.get(i).setText(String.valueOf(getvalue));
+              
+          
+            }
+
+       });
+        }
+                     
+                              for(i=0;i<printerpdbuttonremove.size();i++)
+        {   printerpdbuttonremove.get(i).putClientProperty( "counter", i );
+            printerpdbuttonremove.get(i).putClientProperty( "yo", printerpqtys);
+            
+            printerpdbuttonremove.get(i).addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+               ArrayList<JLabel> qt = new ArrayList<JLabel>();
+               int i =(Integer)((JButton)e.getSource()).getClientProperty( "counter" );
+               
+               qt =(ArrayList<JLabel>)((JButton)e.getSource()).getClientProperty( "yo" );
+               int getvalue = Integer.parseInt(qt.get(i).getText());
+               getvalue--;
+               
+               
+               
+               qt.get(i).setText(String.valueOf(getvalue));
+              
+          
+            }
+
+       });
+        }
                      this.add(printerproductspanel,c);
                      
 
@@ -485,6 +604,54 @@ public class NormalCustomerGui extends JFrame {
           c2.gridy++;   
        }
                      c.gridx++;
+                     
+                                for(i=0;i<tvpdbuttonadd.size();i++)
+        {   tvpdbuttonadd.get(i).putClientProperty( "counter", i );
+            tvpdbuttonadd.get(i).putClientProperty( "yo", tvpqtys);
+            
+            tvpdbuttonadd.get(i).addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+               ArrayList<JLabel> qt = new ArrayList<JLabel>();
+               int i =(Integer)((JButton)e.getSource()).getClientProperty( "counter" );
+               
+               qt =(ArrayList<JLabel>)((JButton)e.getSource()).getClientProperty( "yo" );
+               int getvalue = Integer.parseInt(qt.get(i).getText());
+               getvalue++;
+               
+               
+               
+               qt.get(i).setText(String.valueOf(getvalue));
+              
+          
+            }
+
+       });
+        }
+                     
+                              for(i=0;i<tvpdbuttonremove.size();i++)
+        {   tvpdbuttonremove.get(i).putClientProperty( "counter", i );
+            tvpdbuttonremove.get(i).putClientProperty( "yo", tvpqtys);
+            
+            tvpdbuttonremove.get(i).addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+               ArrayList<JLabel> qt = new ArrayList<JLabel>();
+               int i =(Integer)((JButton)e.getSource()).getClientProperty( "counter" );
+               
+               qt =(ArrayList<JLabel>)((JButton)e.getSource()).getClientProperty( "yo" );
+               int getvalue = Integer.parseInt(qt.get(i).getText());
+               getvalue--;
+               
+               
+               
+               qt.get(i).setText(String.valueOf(getvalue));
+              
+          
+            }
+
+       });
+        }
+                     
+
                      this.add(tvproductspanel,c);
 
 c.weightx=1;
@@ -502,7 +669,58 @@ c.weighty=1;
           
             }
        });
-             c.anchor= GridBagConstraints.PAGE_END;
+       JButton addtobbutton = new JButton("Add to Basket");
+       c.gridx++;
+          addtobbutton.putClientProperty( "CameraProductNames", cpdnames );
+            addtobbutton.putClientProperty( "CameraProductQtys", qtys);
+            
+            addtobbutton.putClientProperty("ComputerProductNames",computerpdnames);
+            addtobbutton.putClientProperty("ComputerProductQtys",computerpqtys);
+
+            addtobbutton.putClientProperty("LaptopProductNames",laptoppdnames);
+            addtobbutton.putClientProperty("LaptopProductQtys",laptoppqtys);
+            
+            addtobbutton.putClientProperty("MobileProductNames",mobilepdnames);
+            addtobbutton.putClientProperty("MobileProductQtys",mobilepqtys);
+            
+            addtobbutton.putClientProperty("PrinterProductNames",printerpdnames);
+            addtobbutton.putClientProperty("PrinterProductQtys",printerpqtys);
+            
+            addtobbutton.putClientProperty("TVProductNames",tvpdnames);
+            addtobbutton.putClientProperty("TVProductQtys",tvpqtys);
+            
+            addtobbutton.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+               ArrayList<JLabel> camerapqtys = new ArrayList<JLabel>();
+               ArrayList<JLabel> computerpqtys = new ArrayList<JLabel>();
+               ArrayList<JLabel> laptoppqtys = new ArrayList<JLabel>();
+               ArrayList<JLabel> mobilepqtys = new ArrayList<JLabel>();
+               ArrayList<JLabel> printerpqtys = new ArrayList<JLabel>();
+               ArrayList<JLabel> tvpqtys = new ArrayList<JLabel>();
+               
+               //int i =(Integer)((JButton)e.getSource()).getClientProperty( "counter" );
+               
+               camerapqtys =(ArrayList<JLabel>)((JButton)e.getSource()).getClientProperty( "CameraProductQtys" );
+               computerpqtys=(ArrayList<JLabel>)((JButton)e.getSource()).getClientProperty( "ComputerProductQtys" );
+               laptoppqtys=(ArrayList<JLabel>)((JButton)e.getSource()).getClientProperty( "LaptopProductQtys" );
+               mobilepqtys=(ArrayList<JLabel>)((JButton)e.getSource()).getClientProperty( "MobileProductQtys" );
+               printerpqtys=(ArrayList<JLabel>)((JButton)e.getSource()).getClientProperty( "PrinterProductQtys" );
+               tvpqtys=(ArrayList<JLabel>)((JButton)e.getSource()).getClientProperty( "TVProductQtys" );
+               System.out.println(camerapqtys.get(0).getText());
+               System.out.println(computerpqtys.get(0).getText());
+              // System.out.println(laptoppqtys.get(0).getText());
+              // System.out.println(mobilepqtys.get(0).getText());
+             //  System.out.println(printerpqtys.get(0).getText());
+              // System.out.println(tvpqtys.get(0).getText());
+               
+               
+            }
+
+       });
+       this.add(addtobbutton,c);
+             //c.anchor= GridBagConstraints.PAGE_END;
+            c.gridx++;
+            
              JButton basketbutton = new JButton("Basket");
              this.add(basketbutton,c);
              basketbutton.addActionListener(new ActionListener()
