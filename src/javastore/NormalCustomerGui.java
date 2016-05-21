@@ -175,7 +175,11 @@ public class NormalCustomerGui extends JFrame {
                ArrayList<JLabel> qt = new ArrayList<JLabel>();
                CameraProduct cameraproduct = new CameraProduct();
                cameraproduct = (CameraProduct)((JButton)e.getSource()).getClientProperty( "cameraproduct" );
-               MoreDetailsCameraProductGui cameraproductgui = new MoreDetailsCameraProductGui(cameraproduct);
+                try {
+                    MoreDetailsCameraProductGui cameraproductgui = new MoreDetailsCameraProductGui(cameraproduct);
+                } catch (SQLException ex) {
+                    Logger.getLogger(NormalCustomerGui.class.getName()).log(Level.SEVERE, null, ex);
+                }
                
             }
 
@@ -282,6 +286,24 @@ public class NormalCustomerGui extends JFrame {
 
        });
         }
+          for(i=0;i<computerpdbuttonmore.size();i++)
+        {   computerpdbuttonmore.get(i).putClientProperty( "computerproduct", computerproducts.get(i) );
+            
+            computerpdbuttonmore.get(i).addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+               ArrayList<JLabel> qt = new ArrayList<JLabel>();
+               ComputerProduct computerproduct = new ComputerProduct();
+               computerproduct = (ComputerProduct)((JButton)e.getSource()).getClientProperty( "computerproduct" );
+                try {
+                    MoreDetailsComputerProductGui cameraproductgui = new MoreDetailsComputerProductGui(computerproduct);
+                } catch (SQLException ex) {
+                    Logger.getLogger(NormalCustomerGui.class.getName()).log(Level.SEVERE, null, ex);
+                }
+               
+            }
+
+       });
+        }
                      this.add(computerppanel,c);
                      c.gridx++;
                      
@@ -381,6 +403,24 @@ public class NormalCustomerGui extends JFrame {
 
        });
         }
+     for(i=0;i<laptopdbuttonmore.size();i++)
+        {   laptopdbuttonmore.get(i).putClientProperty( "laptopproduct", laptopproducts.get(i) );
+            
+            laptopdbuttonmore.get(i).addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+              
+               LaptopProduct laptopproduct = new LaptopProduct();
+               laptopproduct = (LaptopProduct)((JButton)e.getSource()).getClientProperty( "laptopproduct" );
+                try {
+                    MoreDetailsLaptopProductGui laptopdetailsgui = new MoreDetailsLaptopProductGui(laptopproduct);
+                } catch (SQLException ex) {
+                    Logger.getLogger(NormalCustomerGui.class.getName()).log(Level.SEVERE, null, ex);
+                }
+               
+            }
+
+       });
+        }
         this.add(laptopproductspanel,c);
         JPanel mobileproductspanel = new JPanel();
         mobileproductspanel.setLayout(new GridBagLayout());
@@ -471,6 +511,25 @@ public class NormalCustomerGui extends JFrame {
                qt.get(i).setText(String.valueOf(getvalue));
               
           
+            }
+
+       });
+        }
+                              
+                               for(i=0;i<mobilepdbuttonmore.size();i++)
+        {   mobilepdbuttonmore.get(i).putClientProperty( "mobileproduct", mobileproducts.get(i) );
+            
+            mobilepdbuttonmore.get(i).addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+              
+               MobileProduct mobileproduct = new MobileProduct();
+               mobileproduct = (MobileProduct)((JButton)e.getSource()).getClientProperty( "mobileproduct" );
+                try {
+                    MoreDetailsMobileProductGui mobiledetailsgui = new MoreDetailsMobileProductGui(mobileproduct);
+                } catch (SQLException ex) {
+                    Logger.getLogger(NormalCustomerGui.class.getName()).log(Level.SEVERE, null, ex);
+                }
+               
             }
 
        });
@@ -571,6 +630,26 @@ public class NormalCustomerGui extends JFrame {
                qt.get(i).setText(String.valueOf(getvalue));
               
           
+            }
+
+       });
+        }
+                              
+                              
+                                for(i=0;i<printerpdbuttonmore.size();i++)
+        {   printerpdbuttonmore.get(i).putClientProperty( "printerproduct", printerproducts.get(i) );
+            
+            printerpdbuttonmore.get(i).addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+              
+               PrinterProduct printerproduct = new PrinterProduct();
+               printerproduct = (PrinterProduct)((JButton)e.getSource()).getClientProperty( "printerproduct" );
+                try {
+                    MoreDetailsPrinterProductGui printerdetailsgui = new MoreDetailsPrinterProductGui(printerproduct);
+                } catch (SQLException ex) {
+                    Logger.getLogger(NormalCustomerGui.class.getName()).log(Level.SEVERE, null, ex);
+                }
+               
             }
 
        });

@@ -5,7 +5,6 @@
  */
 package javastore;
 
-import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
@@ -13,22 +12,24 @@ import java.awt.Image;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-import javax.imageio.ImageIO;
-import javax.swing.*;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 /**
  *
  * @author 3oxic
  */
-public class MoreDetailsCameraProductGui extends JFrame {
-    public MoreDetailsCameraProductGui(CameraProduct cameraproduct) throws SQLException
+public class MoreDetailsMobileProductGui extends JFrame {
+    public MoreDetailsMobileProductGui(MobileProduct mobileproduct) throws SQLException
     {
         this.setSize(750, 500);  
         this.setVisible(true);
         this.setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
-        CameraProduct product = new CameraProduct();
-        product=cameraproduct;
+        MobileProduct product = new MobileProduct();
+        product=mobileproduct;
         c.gridx=0;
         c.gridy=0;
         c.weightx=1;
@@ -58,45 +59,52 @@ public class MoreDetailsCameraProductGui extends JFrame {
         JLabel pricelabel = new JLabel("Price :");
         this.add(pricelabel,c);
         c.gridx++;
-        
         JLabel price = new JLabel(String.valueOf(product.getPrice())+" Euro");
         this.add(price,c);
-        c.gridx--;
-        c.gridy++;
-        JLabel exposurelabel = new JLabel("Exposure: ");
-        this.add(exposurelabel,c);
-        c.gridx++;
-        JLabel exposure = new JLabel(String.valueOf(product.getExposure()));
-        this.add(exposure,c);
-        c.gridx--;
-        c.gridy++;
-        
-        JLabel fpslabel = new JLabel("FPS: ");
-        this.add(fpslabel,c);
-        c.gridx++;
-        JLabel fps = new JLabel(String.valueOf(product.getFps()));
-        this.add(fps,c);
         c.gridy++;
         c.gridx--;
-        JLabel isolabel = new JLabel("ISO: ");
-        this.add(isolabel,c);
+        JLabel cameralabel = new JLabel("Camera: ");
+        this.add(cameralabel,c);
         c.gridx++;
-        JLabel iso = new JLabel(String.valueOf(product.getIso()));
-        this.add(iso,c);
-        
+        JLabel camera = new JLabel(product.getCamera());
+        this.add(camera,c);
         c.gridy++;
         c.gridx--;
-        JLabel megapixelslabel = new JLabel("Megapixels :");
-        this.add(megapixelslabel,c);
+        JLabel colourlabel = new JLabel("Colour: ");
+        this.add(colourlabel,c);
         c.gridx++;
-        JLabel megapixels = new JLabel(String.valueOf(product.getMexaPixels()));
-        this.add(megapixels,c);
-        JPanel imagespanel = new JPanel();
+        JLabel colour = new JLabel(product.getColour());
+        this.add(colour,c);
+        c.gridy++;
+        c.gridx--;
+        JLabel proccessorlabel = new JLabel("Proccessor: ");
+        this.add(proccessorlabel,c);
+        c.gridx++;
+        JLabel proccessor = new JLabel(product.getProcessor());
+        this.add(proccessor,c);
+        c.gridy++;
+        c.gridx--;
+        JLabel monitorlabel = new JLabel("Monitor: ");
+        this.add(monitorlabel,c);
+        c.gridx++;
+       JLabel monitor = new JLabel(product.getMonitor());
+       this.add(monitor,c);
+      c.gridy++;
+      c.gridx--;
+      
+       JLabel wifilabel = new JLabel("Wifi Adaptor: ");
+      this.add(wifilabel,c);
+      c.gridx++;
+      JLabel wifi = new JLabel(product.getWifi());
+      this.add(wifi,c);
+      
+      
+      JPanel imagespanel = new JPanel();
         imagespanel.setLayout(new GridLayout(1, 5));
         dbmanage db = new dbmanage();
         ResultSet rs2;
-                        rs2=db.executeQuery("SELECT * FROM productimages WHERE name='"+product.getName()+"'");
-ArrayList<Image> images = new ArrayList<Image>();
+        rs2=db.executeQuery("SELECT * FROM productimages WHERE name='"+product.getName()+"'");
+        ArrayList<Image> images = new ArrayList<Image>();
 
          while(rs2.next())
             {
@@ -127,8 +135,6 @@ ArrayList<Image> images = new ArrayList<Image>();
         c.gridy++;
         //c.gridy++;
         this.add(imagespanel,c);
-       
-       
+        
     }
-  
 }
