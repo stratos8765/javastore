@@ -1,5 +1,6 @@
 package javastore;
 
+import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.String;
 import java.sql.*;
 
 public class dbmanage {
@@ -47,6 +48,26 @@ public class dbmanage {
       }
       return rs;
       
+   }
+   public int executeUpdate(String sqlquery) throws SQLException
+   {
+       int result;
+       result = stmt.executeUpdate(sqlquery);
+       return result;
+   }
+   //testing.
+   
+   public PreparedStatement ps() throws SQLException
+   {
+       String sql = "";
+       
+       PreparedStatement preparedStatement = conn.prepareStatement(sql);
+       preparedStatement.setString(1, "Test");
+preparedStatement.setString(2, "Test2");
+preparedStatement.setString(3, "Test3");
+preparedStatement.executeUpdate(); 
+    return preparedStatement;
+    
    }
    public boolean getResult()
    {

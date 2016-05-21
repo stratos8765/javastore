@@ -5,8 +5,10 @@
  */
 package javastore;
 
+import java.awt.Image;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -23,9 +25,10 @@ public class ProductList {
     
     public void getComputerProductsFromDB() {
         dbmanage db = new dbmanage();
+        dbmanage db2 = new dbmanage();
         ResultSet rs;
        rs=db.executeQuery("SELECT * FROM computerproducts ORDER BY name");
-
+       ArrayList<Image> images = new ArrayList<Image>();
         try
     {
         while(rs.next()){
@@ -40,7 +43,7 @@ public class ProductList {
             cp.setGraphicsCard(rs.getString("graphicscard"));
             cp.setMonitor(rs.getString("monitor"));
             cp.setOs(rs.getString("os"));
-                       
+                         
             this.computerproducts.add(cp);
             
       
@@ -60,14 +63,17 @@ public class ProductList {
     
     public void getCameraProductsFromDB() {
         dbmanage db = new dbmanage();
+        dbmanage db2 = new dbmanage();
         ResultSet rs;
        rs=db.executeQuery("SELECT * FROM cameraproducts ORDER BY name");
-
+       ArrayList<Image> images = new ArrayList<Image>();
+       
         try
     {
         while(rs.next()){
+            
             CameraProduct cp = new CameraProduct();
-
+            
             cp.setName(rs.getString("name"));
             cp.setDetails(rs.getString("details"));
             cp.setCode(rs.getInt("code"));
@@ -76,6 +82,7 @@ public class ProductList {
             cp.setIso(rs.getInt("iso"));
             cp.setExposure(rs.getInt("exposure"));
             cp.setFps(rs.getInt("fps"));
+                       
             this.cameraproducts.add(cp);
             
       
@@ -93,15 +100,18 @@ public class ProductList {
     
     public void getLaptopProductsFromDB() {
         dbmanage db = new dbmanage();
+        dbmanage db2 = new dbmanage();
         ResultSet rs;
        rs=db.executeQuery("SELECT * FROM laptopproducts ORDER BY name");
-
+       ArrayList<Image> images = new ArrayList<Image>();
+       
         try
     {
+        
         while(rs.next()){
             LaptopProduct cp = new LaptopProduct();
 
-           cp.setName(rs.getString("name"));
+            cp.setName(rs.getString("name"));
             cp.setDetails(rs.getString("details"));
             cp.setCode(rs.getInt("code"));
             cp.setPrice(rs.getFloat("price"));
@@ -110,7 +120,11 @@ public class ProductList {
             cp.setGraphicsCard(rs.getString("graphicscard"));
             cp.setSsd(rs.getString("ssd"));
             cp.setCdrom(rs.getString("cdrom"));
-                       
+            ResultSet rs2;
+                        rs2=db2.executeQuery("SELECT * FROM productimages WHERE name='"+rs.getString("name")+"'");
+            
+                    
+                               
             this.laptopproducts.add(cp);
             
       
@@ -127,7 +141,10 @@ public class ProductList {
     
         public void getMobileProductsFromDB() {
         dbmanage db = new dbmanage();
+        dbmanage db2 = new dbmanage();
         ResultSet rs;
+        ArrayList<Image> images = new ArrayList<Image>();
+        
        rs=db.executeQuery("SELECT * FROM mobileproducts ORDER BY name");
 
         try
@@ -144,7 +161,11 @@ public class ProductList {
             cp.setMonitor(rs.getString("monitor"));
             cp.setCamera(rs.getString("camera"));
             cp.setWifi(rs.getString("wifi"));
-            cp.setColour(rs.getString("colour"));        
+            cp.setColour(rs.getString("colour"));  
+            ResultSet rs2;
+                        rs2=db2.executeQuery("SELECT * FROM productimages WHERE name='"+rs.getString("name")+"'");
+            
+                       
             this.mobileproducts.add(cp);
             
       
@@ -160,14 +181,16 @@ public class ProductList {
      }
                 public void getPrinterProductsFromDB() {
         dbmanage db = new dbmanage();
+        dbmanage db2 = new dbmanage();
         ResultSet rs;
        rs=db.executeQuery("SELECT * FROM printerproducts ORDER BY name");
-
+ArrayList<Image> images = new ArrayList<Image>();
         try
     {
         while(rs.next()){
             PrinterProduct cp = new PrinterProduct();
-
+            
+            
            cp.setName(rs.getString("name"));
             cp.setDetails(rs.getString("details"));
             cp.setCode(rs.getInt("code"));
@@ -175,7 +198,25 @@ public class ProductList {
             cp.setType(rs.getString("type"));
             cp.setPaperType(rs.getString("papertype"));
             cp.setConnection(rs.getString("connection"));
-            cp.setUse(rs.getString("use"));     
+            cp.setUse(rs.getString("use")); 
+                ResultSet rs2;
+                        rs2=db2.executeQuery("SELECT * FROM productimages WHERE name='"+rs.getString("name")+"'");
+            
+                        while(rs2.next())
+            {
+                 
+            byte[] img = rs2.getBytes("Image");
+
+                    ImageIcon image = new ImageIcon(img);
+                    Image im = image.getImage();
+                    Image myImg = im.getScaledInstance(100, 100,Image.SCALE_SMOOTH);
+                    ImageIcon newImage = new ImageIcon(myImg);
+                    images.add(newImage.getImage());
+            
+            }
+            cp.setImages(images);
+                 images.clear();
+                 
             this.printerproducts.add(cp);
 
          
@@ -191,25 +232,48 @@ public class ProductList {
                 
     public void getTVProductsFromDB() {
         dbmanage db = new dbmanage();
+        dbmanage db2 = new dbmanage();
         ResultSet rs;
        rs=db.executeQuery("SELECT * FROM tvproducts ORDER BY name");
-
+       ArrayList<Image> images = new ArrayList<Image>();
+       
         try
     {
         while(rs.next()){
             TVProduct cp = new TVProduct();
-
+            
            cp.setName(rs.getString("name"));
             cp.setDetails(rs.getString("details"));
             cp.setCode(rs.getInt("code"));
             cp.setPrice(rs.getFloat("price"));
             cp.setInches(rs.getInt("inches"));
             cp.setHd(rs.getString("hd"));
-               
+            
+            ResultSet rs2;
+                        rs2=db2.executeQuery("SELECT * FROM productimages WHERE name='"+rs.getString("name")+"'");
+            images= new ArrayList<Image>();
+            
+                        while(rs2.next())
+            {
+                 
+            byte[] img = rs2.getBytes("Image");
+
+                    ImageIcon image = new ImageIcon(img);
+                    Image im = image.getImage();
+                    Image myImg = im.getScaledInstance(100, 100,Image.SCALE_SMOOTH);
+                    ImageIcon newImage = new ImageIcon(myImg);
+                    images.add(newImage.getImage());
+            
+            }
+            cp.setImages(images);
+            images.clear();
+            
+            
             this.tvproducts.add(cp);
 
          
-      }
+  
+        }
     }   catch(Exception ex)
       {
          ex.printStackTrace(); 
