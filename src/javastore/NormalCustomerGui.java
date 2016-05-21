@@ -5,6 +5,7 @@
  */
 package javastore;
 
+import static com.sun.org.apache.xalan.internal.xsltc.compiler.sym.AND;
 import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -98,7 +99,7 @@ public class NormalCustomerGui extends JFrame {
           cppanel.add(pdname,c2);
           cpdnames.add(pdname);
           c2.gridx++;
-          JLabel pdprice = new JLabel("Price: " +String.valueOf(cameraproducts.get(i).getPrice()));
+          JLabel pdprice = new JLabel(" Price: " +String.valueOf(cameraproducts.get(i).getPrice()));
           cppanel.add(pdprice,c2);
           cpdprices.add(cameraproducts.get(i).getPrice());
           c2.gridx++;
@@ -750,6 +751,25 @@ public class NormalCustomerGui extends JFrame {
 
        });
         }
+                              
+                               for(i=0;i<tvpdbuttonmore.size();i++)
+        {   tvpdbuttonmore.get(i).putClientProperty( "tvproduct", tvproducts.get(i) );
+            
+            tvpdbuttonmore.get(i).addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e) {
+               
+               TVProduct tvproduct = new TVProduct();
+               tvproduct = (TVProduct)((JButton)e.getSource()).getClientProperty( "tvproduct" );
+                try {
+                    MoreDetailsTVProductGui tvproductgui = new MoreDetailsTVProductGui(tvproduct);
+                } catch (SQLException ex) {
+                    Logger.getLogger(NormalCustomerGui.class.getName()).log(Level.SEVERE, null, ex);
+                }
+               
+            }
+
+       });
+        }
                      
 
                      this.add(tvproductspanel,c);
@@ -826,17 +846,24 @@ c.weighty=1;
                   {
                       String[] arraypdname = camerapdnames.get(i).getText().split("\\: ", -1);
                   ResultSet rs;
+                  int rs2;
+                  
+                  dbmanage db2 = new dbmanage();
                   
                   rs =productmanage.executeQuery("SELECT * FROM productqtys WHERE name='"+arraypdname[1]+"'");
                       try {
                           while(rs.next())
                           {
                               int availableqty=rs.getInt("availableqty");
-                              if(availableqty>Integer.parseInt(camerapqtys.get(i).getText()))
+                              if(availableqty>=Integer.parseInt(camerapqtys.get(i).getText()) && Integer.parseInt(camerapqtys.get(i).getText())!=0)
                               {
+                                  int newavailableqty=availableqty -(Integer.parseInt(camerapqtys.get(i).getText()));
+                                  //System.out.println("UPDATE productqtys SET availableqty="+newavailableqty+" WHERE name='"+arraypdname[1]+"'");
                                   
+                                  rs2=db2.executeUpdate("UPDATE productqtys SET availableqty="+newavailableqty+" WHERE name='"+arraypdname[1]+"'");
+                                          
                               }
-                              else
+                              else if(Integer.parseInt(camerapqtys.get(i).getText())!=0)
                               {
                                   JFrame error = new JFrame();
                                   JOptionPane.showMessageDialog(error, "You can only buy  "+availableqty+" Pieces Of product: "+arraypdname[1]);

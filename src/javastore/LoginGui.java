@@ -92,6 +92,11 @@ public class LoginGui extends JFrame
                            //System.out.println("it works");
                           //deikse admin gui
                        }
+                                             else
+                      {
+                          JFrame error = new JFrame();
+                                  JOptionPane.showMessageDialog(error, "Wrong Username or Password");
+                      }
                        
                                 
                                     
@@ -114,6 +119,11 @@ public class LoginGui extends JFrame
                           
                           
                       }
+                                            else
+                      {
+                          JFrame error = new JFrame();
+                                  JOptionPane.showMessageDialog(error, "Wrong Username or Password");
+                      }
                    }
                 }
                 if(s=="Company Customer")
@@ -128,6 +138,11 @@ public class LoginGui extends JFrame
                       if(usernamefield.equals(returnusername) && passwordfield.equals(returnpassword))
                       {
                          //show company customer gui
+                      }
+                      else
+                      {
+                          JFrame error = new JFrame();
+                                  JOptionPane.showMessageDialog(error, "Wrong Username or Password");
                       }
                    }
                 }
