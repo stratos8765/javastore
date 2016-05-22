@@ -791,24 +791,26 @@ c.weighty=1;
        });
        JButton addtobbutton = new JButton("Add to Basket");
        c.gridx++;
-          addtobbutton.putClientProperty( "CameraProductNames", cpdnames );
+          addtobbutton.putClientProperty( "CameraProduct", cameraproducts );
             addtobbutton.putClientProperty( "CameraProductQtys", qtys);
             
-            addtobbutton.putClientProperty("ComputerProductNames",computerpdnames);
+            addtobbutton.putClientProperty("ComputerProduct",computerproducts);
             addtobbutton.putClientProperty("ComputerProductQtys",computerpqtys);
 
-            addtobbutton.putClientProperty("LaptopProductNames",laptoppdnames);
+            addtobbutton.putClientProperty("LaptopProduct",laptopproducts);
             addtobbutton.putClientProperty("LaptopProductQtys",laptoppqtys);
             
-            addtobbutton.putClientProperty("MobileProductNames",mobilepdnames);
+            addtobbutton.putClientProperty("MobileProduct",mobileproducts);
             addtobbutton.putClientProperty("MobileProductQtys",mobilepqtys);
             
-            addtobbutton.putClientProperty("PrinterProductNames",printerpdnames);
+            addtobbutton.putClientProperty("PrinterProduct",printerproducts);
             addtobbutton.putClientProperty("PrinterProductQtys",printerpqtys);
             
-            addtobbutton.putClientProperty("TVProductNames",tvpdnames);
+            addtobbutton.putClientProperty("TVProduct",tvproducts);
             addtobbutton.putClientProperty("TVProductQtys",tvpqtys);
             
+            
+            addtobbutton.putClientProperty( "customername", customer );
             addtobbutton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
                ArrayList<JLabel> camerapqtys = new ArrayList<JLabel>();
@@ -817,13 +819,15 @@ c.weighty=1;
                ArrayList<JLabel> mobilepqtys = new ArrayList<JLabel>();
                ArrayList<JLabel> printerpqtys = new ArrayList<JLabel>();
                ArrayList<JLabel> tvpqtys = new ArrayList<JLabel>();
-               ArrayList<JLabel> camerapdnames = new ArrayList<JLabel>();
-               ArrayList<JLabel> computernames = new ArrayList<JLabel>();
-               ArrayList<JLabel> laptopnames = new ArrayList<JLabel>();
-               ArrayList<JLabel> mobilenames = new ArrayList<JLabel>();
-               ArrayList<JLabel> printernames = new ArrayList<JLabel>();
-               ArrayList<JLabel> tvnames = new ArrayList<JLabel>();
                
+               
+               ArrayList<CameraProduct> camerapds = new ArrayList<CameraProduct>();
+               ArrayList<ComputerProduct> computerpds = new ArrayList<ComputerProduct>();
+               ArrayList<LaptopProduct> laptoppds = new ArrayList<LaptopProduct>();
+               ArrayList<MobileProduct> mobilepds = new ArrayList<MobileProduct>();
+               ArrayList<PrinterProduct> printerpds = new ArrayList<PrinterProduct>();
+               ArrayList<TVProduct> tvpds = new ArrayList<TVProduct>();
+               String customername = (String)((JButton)e.getSource()).getClientProperty( "customername" );
                //int i =(Integer)((JButton)e.getSource()).getClientProperty( "counter" );
                
                camerapqtys =(ArrayList<JLabel>)((JButton)e.getSource()).getClientProperty( "CameraProductQtys" );
@@ -833,24 +837,36 @@ c.weighty=1;
                printerpqtys=(ArrayList<JLabel>)((JButton)e.getSource()).getClientProperty( "PrinterProductQtys" );
                tvpqtys=(ArrayList<JLabel>)((JButton)e.getSource()).getClientProperty( "TVProductQtys" );
               
-               camerapdnames = (ArrayList<JLabel>)((JButton)e.getSource()).getClientProperty( "CameraProductNames" );
-               computernames =(ArrayList<JLabel>)((JButton)e.getSource()).getClientProperty( "ComputerProductNames" );
-               laptopnames = (ArrayList<JLabel>)((JButton)e.getSource()).getClientProperty( "LaptopProductNames" );
-               mobilenames = (ArrayList<JLabel>)((JButton)e.getSource()).getClientProperty( "MobileProductNames" );
-               printernames = (ArrayList<JLabel>)((JButton)e.getSource()).getClientProperty( "PrinterProductNames" );
-               tvnames = (ArrayList<JLabel>)((JButton)e.getSource()).getClientProperty( "TVProductNames" );
-              dbmanage productmanage = new dbmanage();
+               camerapds = (ArrayList<CameraProduct>)((JButton)e.getSource()).getClientProperty( "CameraProduct" );
+               computerpds =(ArrayList<ComputerProduct>)((JButton)e.getSource()).getClientProperty( "ComputerProduct" );
+               laptoppds = (ArrayList<LaptopProduct>)((JButton)e.getSource()).getClientProperty( "LaptopProduct" );
+               mobilepds = (ArrayList<MobileProduct>)((JButton)e.getSource()).getClientProperty( "MobileProduct" );
+               printerpds = (ArrayList<PrinterProduct>)((JButton)e.getSource()).getClientProperty( "PrinterProduct" );
+               tvpds = (ArrayList<TVProduct>)((JButton)e.getSource()).getClientProperty( "TVProduct" );
+               
+               ArrayList<BasketProduct> baskettemp = new ArrayList<BasketProduct>();
+               
+               
+               dbmanage productmanage = new dbmanage();
               for(int i =0;i<camerapqtys.size();i++)
               {
-                  if(Integer.parseInt(camerapqtys.get(i).getText())>=0)
+                  if(Integer.parseInt(camerapqtys.get(i).getText())>0)
                   {
-                      String[] arraypdname = camerapdnames.get(i).getText().split("\\: ", -1);
+                      BasketProduct bproduct = new BasketProduct();
+                      
+                     
                   ResultSet rs;
                   int rs2;
                   
+                  bproduct.setCustomerName(customername);
+                  bproduct.setQty(Integer.parseInt(camerapqtys.get(i).getText()));
+                  bproduct.setProductName(camerapds.get(i).getName());
+                  bproduct.setProductCode(camerapds.get(i).getCode());
+                  baskettemp.add(bproduct);
+                  
                   dbmanage db2 = new dbmanage();
                   
-                  rs =productmanage.executeQuery("SELECT * FROM productqtys WHERE name='"+arraypdname[1]+"'");
+                  rs =productmanage.executeQuery("SELECT * FROM productqtys WHERE name='"+camerapds.get(i).getName()+"'");
                       try {
                           while(rs.next())
                           {
@@ -859,14 +875,14 @@ c.weighty=1;
                               {
                                   int newavailableqty=availableqty -(Integer.parseInt(camerapqtys.get(i).getText()));
                                   //System.out.println("UPDATE productqtys SET availableqty="+newavailableqty+" WHERE name='"+arraypdname[1]+"'");
-                                  
-                                  rs2=db2.executeUpdate("UPDATE productqtys SET availableqty="+newavailableqty+" WHERE name='"+arraypdname[1]+"'");
+                                  rs2=db2.executeUpdate("INSERT INTO basket(`customername`,`pname`,`pprice`,`qty`) VALUES('"+customername+"','"+camerapds.get(i).getName()+"',"+camerapds.get(i).getPrice()+","+Integer.parseInt(camerapqtys.get(i).getText())+");");
+                                  rs2=db2.executeUpdate("UPDATE productqtys SET availableqty="+newavailableqty+" WHERE name='"+camerapds.get(i).getName()+"'");
                                           
                               }
                               else if(Integer.parseInt(camerapqtys.get(i).getText())!=0)
                               {
                                   JFrame error = new JFrame();
-                                  JOptionPane.showMessageDialog(error, "You can only buy  "+availableqty+" Pieces Of product: "+arraypdname[1]);
+                                  JOptionPane.showMessageDialog(error, "You can only buy  "+availableqty+" Pieces Of product: "+camerapds.get(i).getName());
                               }
                           }                     } catch (SQLException ex) {
                           Logger.getLogger(NormalCustomerGui.class.getName()).log(Level.SEVERE, null, ex);
@@ -876,163 +892,194 @@ c.weighty=1;
                   
                           
               }
-             
               
-                for(int i =0;i<computerpqtys.size();i++)
+                            for(int i =0;i<computerpqtys.size();i++)
               {
-                  if(Integer.parseInt(computerpqtys.get(i).getText())>=0)
+                  if(Integer.parseInt(computerpqtys.get(i).getText())>0)
                   {
-                      String[] arraypdname = computernames.get(i).getText().split("\\: ", -1);
+                      BasketProduct bproduct = new BasketProduct();
+                      
+                     
                   ResultSet rs;
+                  int rs2;
                   
-                  rs =productmanage.executeQuery("SELECT * FROM productqtys WHERE name='"+arraypdname[1]+"'");
+                  bproduct.setCustomerName(customername);
+                  bproduct.setQty(Integer.parseInt(computerpqtys.get(i).getText()));
+                  bproduct.setProductName(computerpds.get(i).getName());
+                  bproduct.setProductCode(computerpds.get(i).getCode());
+                  baskettemp.add(bproduct);
+                  
+                  dbmanage db2 = new dbmanage();
+                  
+                  rs =productmanage.executeQuery("SELECT * FROM productqtys WHERE name='"+computerpds.get(i).getName()+"'");
                       try {
                           while(rs.next())
                           {
                               int availableqty=rs.getInt("availableqty");
-                              if(availableqty>=Integer.parseInt(computerpqtys.get(i).getText()))
+                              if(availableqty>=Integer.parseInt(computerpqtys.get(i).getText()) && Integer.parseInt(computerpqtys.get(i).getText())!=0)
                               {
-                                  
+                                  int newavailableqty=availableqty -(Integer.parseInt(computerpqtys.get(i).getText()));
+                                  //System.out.println("UPDATE productqtys SET availableqty="+newavailableqty+" WHERE name='"+arraypdname[1]+"'");
+                                  rs2=db2.executeUpdate("INSERT INTO basket(`customername`,`pname`,`pprice`,`qty`) VALUES('"+customername+"','"+computerpds.get(i).getName()+"',"+computerpds.get(i).getPrice()+","+Integer.parseInt(computerpqtys.get(i).getText())+");");
+                                  rs2=db2.executeUpdate("UPDATE productqtys SET availableqty="+newavailableqty+" WHERE name='"+computerpds.get(i).getName()+"'");
+                                          
                               }
-                              else
+                              else if(Integer.parseInt(computerpqtys.get(i).getText())!=0)
                               {
                                   JFrame error = new JFrame();
-                                  JOptionPane.showMessageDialog(error, "You can only buy  "+availableqty+" Pieces Of product: "+arraypdname[1]);
+                                  JOptionPane.showMessageDialog(error, "You can only buy  "+availableqty+" Pieces Of product: "+computerpds.get(i).getName());
                               }
                           }                     } catch (SQLException ex) {
                           Logger.getLogger(NormalCustomerGui.class.getName()).log(Level.SEVERE, null, ex);
                       }
                       
                   }
-                  
-                          
-              }
-                
-                
-                for(int i =0;i<laptoppqtys.size();i++)
-              {
-                  if(Integer.parseInt(laptoppqtys.get(i).getText())>=0)
-                  {
-                      String[] arraypdname = laptopnames.get(i).getText().split("\\: ", -1);
-                  ResultSet rs;
-                  
-                  rs =productmanage.executeQuery("SELECT * FROM productqtys WHERE name='"+arraypdname[1]+"'");
-                      try {
-                          while(rs.next())
-                          {
-                              int availableqty=rs.getInt("availableqty");
-                              if(availableqty>=Integer.parseInt(laptoppqtys.get(i).getText()))
-                              {
-                                  
-                              }
-                              else
-                              {
-                                  JFrame error = new JFrame();
-                                  JOptionPane.showMessageDialog(error, "You can only buy  "+availableqty+" Pieces Of product: "+arraypdname[1]);
-                              }
-                          }                     } catch (SQLException ex) {
-                          Logger.getLogger(NormalCustomerGui.class.getName()).log(Level.SEVERE, null, ex);
-                      }
-                      
-                  }
-                  
-                          
-              }
-
-                                for(int i =0;i<mobilepqtys.size();i++)
-              {
-                  if(Integer.parseInt(mobilepqtys.get(i).getText())>=0)
-                  {
-                      String[] arraypdname = mobilenames.get(i).getText().split("\\: ", -1);
-                  ResultSet rs;
-                  
-                  rs =productmanage.executeQuery("SELECT * FROM productqtys WHERE name='"+arraypdname[1]+"'");
-                  
-                      try {
-                          while(rs.next())
-                          {
-                              int availableqty=rs.getInt("availableqty");
-                              if(availableqty>=Integer.parseInt(mobilepqtys.get(i).getText()))
-                              {
-                                  
-                              }
-                              else
-                              {
-                                  JFrame error = new JFrame();
-                                  JOptionPane.showMessageDialog(error, "You can only buy  "+availableqty+" Pieces Of product: "+arraypdname[1]);
-                              }
-                          }                     } catch (SQLException ex) {
-                          Logger.getLogger(NormalCustomerGui.class.getName()).log(Level.SEVERE, null, ex);
-                      }
-                      
-                  }
-                  
-                          
-              }
-                                
-                                for(int i =0;i<printerpqtys.size();i++)
-              {
-                  if(Integer.parseInt(printerpqtys.get(i).getText())>=0)
-                  {
-                      String[] arraypdname = printernames.get(i).getText().split("\\: ", -1);
-                  ResultSet rs;
-                  
-                  rs =productmanage.executeQuery("SELECT * FROM productqtys WHERE name='"+arraypdname[1]+"'");
-                  
-                      try {
-                          while(rs.next())
-                          {
-                              int availableqty=rs.getInt("availableqty");
-                              if(availableqty>=Integer.parseInt(printerpqtys.get(i).getText()))
-                              {
-                                  
-                              }
-                              else
-                              {
-                                  JFrame error = new JFrame();
-                                  JOptionPane.showMessageDialog(error, "You can only buy  "+availableqty+" Pieces Of product: "+arraypdname[1]);
-                              }
-                          }                     } catch (SQLException ex) {
-                          Logger.getLogger(NormalCustomerGui.class.getName()).log(Level.SEVERE, null, ex);
-                      }
-                      
-                  }
-                  
-                          
-              }
-                                
-                                for(int i =0;i<tvpqtys.size();i++)
-              {
-                  if(Integer.parseInt(tvpqtys.get(i).getText())>0)
-                  {
-                      String[] arraypdname = tvnames.get(i).getText().split("\\: ", -1);
-                  ResultSet rs;
-                  
-                  rs =productmanage.executeQuery("SELECT * FROM productqtys WHERE name='"+arraypdname[1]+"'");
-                  
-                      try {
-                          while(rs.next())
-                          {
-                              int availableqty=rs.getInt("availableqty");
-                              if(availableqty>=Integer.parseInt(tvpqtys.get(i).getText()))
-                              {
-                                  
-                              }
-                              else
-                              {
-                                  JFrame error = new JFrame();
-                                  JOptionPane.showMessageDialog(error, "You can only buy  "+availableqty+" Pieces Of product: "+arraypdname[1]);
-                              }
-                          }                     } catch (SQLException ex) {
-                          Logger.getLogger(NormalCustomerGui.class.getName()).log(Level.SEVERE, null, ex);
-                      }
-                      
-                  }
-                  
+          
                           
               }
                
+for(int i =0;i<laptoppqtys.size();i++)
+              {
+                  if(Integer.parseInt(laptoppqtys.get(i).getText())>0)
+                  {
+                      BasketProduct bproduct = new BasketProduct();
+                      
+                     
+                  ResultSet rs;
+                  int rs2;
+                  
+                  bproduct.setCustomerName(customername);
+                  bproduct.setQty(Integer.parseInt(laptoppqtys.get(i).getText()));
+                  bproduct.setProductName(laptoppds.get(i).getName());
+                  bproduct.setProductCode(laptoppds.get(i).getCode());
+                  baskettemp.add(bproduct);
+                  
+                  dbmanage db2 = new dbmanage();
+                  
+                  rs =productmanage.executeQuery("SELECT * FROM productqtys WHERE name='"+laptoppds.get(i).getName()+"'");
+                      try {
+                          while(rs.next())
+                          {
+                              int availableqty=rs.getInt("availableqty");
+                              if(availableqty>=Integer.parseInt(laptoppqtys.get(i).getText()) && Integer.parseInt(laptoppqtys.get(i).getText())!=0)
+                              {
+                                  int newavailableqty=availableqty -(Integer.parseInt(laptoppqtys.get(i).getText()));
+                                  //System.out.println("UPDATE productqtys SET availableqty="+newavailableqty+" WHERE name='"+arraypdname[1]+"'");
+                                  rs2=db2.executeUpdate("INSERT INTO basket(`customername`,`pname`,`pprice`,`qty`) VALUES('"+customername+"','"+laptoppds.get(i).getName()+"',"+laptoppds.get(i).getPrice()+","+Integer.parseInt(laptoppqtys.get(i).getText())+");");
+                                  rs2=db2.executeUpdate("UPDATE productqtys SET availableqty="+newavailableqty+" WHERE name='"+laptoppds.get(i).getName()+"'");
+                                          
+                              }
+                              else if(Integer.parseInt(laptoppqtys.get(i).getText())!=0)
+                              {
+                                  JFrame error = new JFrame();
+                                  JOptionPane.showMessageDialog(error, "You can only buy  "+availableqty+" Pieces Of product: "+laptoppds.get(i).getName());
+                              }
+                          }                     } catch (SQLException ex) {
+                          Logger.getLogger(NormalCustomerGui.class.getName()).log(Level.SEVERE, null, ex);
+                      }
+                      
+                  }
+          
+                          
+              }      
+
+
+
+for(int i =0;i<mobilepqtys.size();i++)
+              {
+                  if(Integer.parseInt(mobilepqtys.get(i).getText())>0)
+                  {
+                      BasketProduct bproduct = new BasketProduct();
+                      
+                     
+                  ResultSet rs;
+                  int rs2;
+                  
+                  bproduct.setCustomerName(customername);
+                  bproduct.setQty(Integer.parseInt(mobilepqtys.get(i).getText()));
+                  bproduct.setProductName(mobilepds.get(i).getName());
+                  bproduct.setProductCode(mobilepds.get(i).getCode());
+                  baskettemp.add(bproduct);
+                  
+                  dbmanage db2 = new dbmanage();
+                  
+                  rs =productmanage.executeQuery("SELECT * FROM productqtys WHERE name='"+mobilepds.get(i).getName()+"'");
+                      try {
+                          while(rs.next())
+                          {
+                              int availableqty=rs.getInt("availableqty");
+                              if(availableqty>=Integer.parseInt(mobilepqtys.get(i).getText()) && Integer.parseInt(mobilepqtys.get(i).getText())!=0)
+                              {
+                                  int newavailableqty=availableqty -(Integer.parseInt(mobilepqtys.get(i).getText()));
+                                  //System.out.println("UPDATE productqtys SET availableqty="+newavailableqty+" WHERE name='"+arraypdname[1]+"'");
+                                  rs2=db2.executeUpdate("INSERT INTO basket(`customername`,`pname`,`pprice`,`qty`) VALUES('"+customername+"','"+mobilepds.get(i).getName()+"',"+mobilepds.get(i).getPrice()+","+Integer.parseInt(mobilepqtys.get(i).getText())+");");
+                                  rs2=db2.executeUpdate("UPDATE productqtys SET availableqty="+newavailableqty+" WHERE name='"+mobilepds.get(i).getName()+"'");
+                                          
+                              }
+                              else if(Integer.parseInt(mobilepqtys.get(i).getText())!=0)
+                              {
+                                  JFrame error = new JFrame();
+                                  JOptionPane.showMessageDialog(error, "You can only buy  "+availableqty+" Pieces Of product: "+mobilepds.get(i).getName());
+                              }
+                          }                     } catch (SQLException ex) {
+                          Logger.getLogger(NormalCustomerGui.class.getName()).log(Level.SEVERE, null, ex);
+                      }
+                      
+                  }
+          
+                          
+              }
+
+
+             for(int i =0;i<tvpqtys.size();i++)
+              {
+                  if(Integer.parseInt(printerpqtys.get(i).getText())>0)
+                  {
+                      BasketProduct bproduct = new BasketProduct();
+                      
+                     
+                  ResultSet rs;
+                  int rs2;
+                  
+                  bproduct.setCustomerName(customername);
+                  bproduct.setQty(Integer.parseInt(printerpqtys.get(i).getText()));
+                  bproduct.setProductName(tvpds.get(i).getName());
+                  bproduct.setProductCode(tvpds.get(i).getCode());
+                  baskettemp.add(bproduct);
+                  
+                  dbmanage db2 = new dbmanage();
+                  
+                  rs =productmanage.executeQuery("SELECT * FROM productqtys WHERE name='"+tvpds.get(i).getName()+"'");
+                      try {
+                          while(rs.next())
+                          {
+                              int availableqty=rs.getInt("availableqty");
+                              if(availableqty>=Integer.parseInt(printerpqtys.get(i).getText()) && Integer.parseInt(printerpqtys.get(i).getText())!=0)
+                              {
+                                  int newavailableqty=availableqty -(Integer.parseInt(printerpqtys.get(i).getText()));
+                                  //System.out.println("UPDATE productqtys SET availableqty="+newavailableqty+" WHERE name='"+arraypdname[1]+"'");
+                                  rs2=db2.executeUpdate("INSERT INTO basket(`customername`,`pname`,`pprice`,`qty`) VALUES('"+customername+"','"+tvpds.get(i).getName()+"',"+tvpds.get(i).getPrice()+","+Integer.parseInt(printerpqtys.get(i).getText())+");");
+                                  rs2=db2.executeUpdate("UPDATE productqtys SET availableqty="+newavailableqty+" WHERE name='"+tvpds.get(i).getName()+"'");
+                                          
+                              }
+                              else if(Integer.parseInt(printerpqtys.get(i).getText())!=0)
+                              {
+                                  JFrame error = new JFrame();
+                                  JOptionPane.showMessageDialog(error, "You can only buy  "+availableqty+" Pieces Of product: "+tvpds.get(i).getName());
+                              }
+                          }                     } catch (SQLException ex) {
+                          Logger.getLogger(NormalCustomerGui.class.getName()).log(Level.SEVERE, null, ex);
+                      }
+                      
+                  }          
+                          
+              }               
+                            
+               
             }
+            
+            
+            
 
        });
        this.add(addtobbutton,c);
@@ -1041,11 +1088,17 @@ c.weighty=1;
             
              JButton basketbutton = new JButton("Basket");
              this.add(basketbutton,c);
+             basketbutton.putClientProperty( "customername", customer );
              basketbutton.addActionListener(new ActionListener()
              {
                 public void actionPerformed(ActionEvent e) 
                 {
-         
+                    String cname=(String)((JButton)e.getSource()).getClientProperty( "customername" );
+                    try {
+                        BasketGui showbasket = new BasketGui(cname);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(NormalCustomerGui.class.getName()).log(Level.SEVERE, null, ex);
+                    }
           
                  }
               });
