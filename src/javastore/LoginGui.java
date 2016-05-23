@@ -141,8 +141,8 @@ public class LoginGui extends JFrame
                       }
                       else
                       {
-                          JFrame error = new JFrame();
-                                  JOptionPane.showMessageDialog(error, "Wrong Username or Password");
+                         JFrame error = new JFrame();
+                                  JOptionPane.showMessageDialog(error, "Wrong Username or Password");  
                       }
                    }
                 }

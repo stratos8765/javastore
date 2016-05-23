@@ -1031,7 +1031,7 @@ for(int i =0;i<mobilepqtys.size();i++)
               }
 
 
-             for(int i =0;i<tvpqtys.size();i++)
+             for(int i =0;i<printerpqtys.size();i++)
               {
                   if(Integer.parseInt(printerpqtys.get(i).getText())>0)
                   {
@@ -1095,7 +1095,7 @@ for(int i =0;i<mobilepqtys.size();i++)
                 {
                     String cname=(String)((JButton)e.getSource()).getClientProperty( "customername" );
                     try {
-                        BasketGui showbasket = new BasketGui(cname);
+                        NormalCustomerBasketGui showbasket = new NormalCustomerBasketGui(cname);
                     } catch (SQLException ex) {
                         Logger.getLogger(NormalCustomerGui.class.getName()).log(Level.SEVERE, null, ex);
                     }
