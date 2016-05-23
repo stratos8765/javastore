@@ -1105,16 +1105,24 @@ for(int i =0;i<mobilepqtys.size();i++)
              
              c.anchor= GridBagConstraints.LAST_LINE_END;
              JButton ohbutton = new JButton("Order History");
-            // c.gridx++;
-             this.add(ohbutton,c);
-             basketbutton.addActionListener(new ActionListener()
+             ohbutton.putClientProperty( "cname", customer);
+             ohbutton.addActionListener(new ActionListener()
              {
                 public void actionPerformed(ActionEvent e) 
                 {
+                    String cname=(String)((JButton)e.getSource()).getClientProperty( "cname" );
+                    try {
+                        OrderHistoryGui oh = new OrderHistoryGui(cname);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(NormalCustomerGui.class.getName()).log(Level.SEVERE, null, ex);
+                    }
          
                  
                  }
               });
+            // c.gridx++;
+             this.add(ohbutton,c);
+
 
              
             }

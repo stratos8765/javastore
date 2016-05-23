@@ -79,6 +79,38 @@ c.anchor = GridBagConstraints.PAGE_START;
         JLabel productqtlabel = new JLabel("  Amount to buy: " +productqty.get(i).getText());
         this.add(productqtlabel,c2);
         productlabels.add(productqtlabel);
+        JButton removebutton = new JButton("Remove");
+                removebutton.putClientProperty( "cname", customername);
+                removebutton.putClientProperty("pname",productnames.get(i).getText());
+                removebutton.putClientProperty("pqty",productqty.get(i).getText());
+                
+             removebutton.addActionListener(new ActionListener()
+             {
+                public void actionPerformed(ActionEvent e) 
+                {
+                    String cname=(String)((JButton)e.getSource()).getClientProperty( "cname" );
+                    String pname=(String)((JButton)e.getSource()).getClientProperty( "pname" );
+                    String pqty=(String)((JButton)e.getSource()).getClientProperty( "pqty" );
+                    dbmanage conn = new dbmanage();
+                    int rs;
+                    int getqty;
+                    System.out.println("DELETE FROM basket where pname='"+pname+";");
+                    try {
+                        rs=conn.executeUpdate("DELETE FROM basket where pname='"+pname+"';"); 
+                        rs=conn.executeUpdate("UPDATE productqtys SET availableqty = availableqty + "+pqty+" WHERE name='"+pname+"';");
+                        JFrame error = new JFrame();
+                        JOptionPane.showMessageDialog(error, "Product Removed!");
+                        
+                    } catch (SQLException ex) {
+                        Logger.getLogger(NormalCustomerBasketGui.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                 
+                 }
+              });
+             c2.gridx++;
+             
+             
+             this.add(removebutton,c2);
 
         c2.gridx=0;
         c2.gridy++;
@@ -119,10 +151,29 @@ c.anchor = GridBagConstraints.PAGE_START;
                  i++;
                  
             }
+             addresses[i]="Add new address";
             JLabel salabel = new JLabel("Select Address:");
             this.add(salabel,c2);
             c2.gridx++;
             final JComboBox cb = new JComboBox(addresses);
+             cb.putClientProperty("cname",customername);
+             cb.addActionListener(new ActionListener()
+             {
+                public void actionPerformed(ActionEvent e) 
+                {
+                    String address = (String) cb.getSelectedItem();
+                    if(address=="Add new address")
+                    {
+                      String customername=(String)((JComboBox)e.getSource()).getClientProperty( "cname" );
+                      AddNewAddressGui adgui = new AddNewAddressGui(customername);
+                      closethis();
+                      
+                        
+                    }
+         
+                 
+                 }
+              });
             this.add(cb,c2);
             c2.gridy++;
             c2.gridx=1;
@@ -135,19 +186,18 @@ c.anchor = GridBagConstraints.PAGE_START;
             this.add(totalpricelabel,c2);
           c2.gridy++;
               JButton confirmorderbutton = new JButton("Confirm Order");
+              
               confirmorderbutton.putClientProperty("cname",customername);
               confirmorderbutton.putClientProperty("pnames",productnames);
               confirmorderbutton.putClientProperty("pprices",productprices);
               confirmorderbutton.putClientProperty("pqtys",productqty);
               confirmorderbutton.putClientProperty("tprice",totalprice);
-              confirmorderbutton.putClientProperty("address",(String) cb.getSelectedItem());
-              
             //confirmorderbutton.putClientProperty( "yo", tvpqtys);
             confirmorderbutton.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent e) {
                 String cname =(String)((JButton)e.getSource()).getClientProperty( "cname" );
                 float totalprice=(float)((JButton)e.getSource()).getClientProperty( "tprice" );
-                String address = (String)((JButton)e.getSource()).getClientProperty( "address" );
+                String address = (String) cb.getSelectedItem();
                 ArrayList<JLabel> pnames =(ArrayList<JLabel>)((JButton)e.getSource()).getClientProperty( "pnames" );
                 ArrayList<JLabel> pprices =(ArrayList<JLabel>)((JButton)e.getSource()).getClientProperty( "pprices" );
                 ArrayList<JLabel> pqtys =(ArrayList<JLabel>)((JButton)e.getSource()).getClientProperty( "pqtys" );
@@ -197,7 +247,11 @@ c.anchor = GridBagConstraints.PAGE_START;
     }
 
     
-         
+         public void closethis()
+         {
+             this.dispose();
+             
+         }
 
         
     }
