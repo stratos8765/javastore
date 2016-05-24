@@ -7,8 +7,13 @@ package javastore;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
 
 /**
  *
@@ -27,7 +32,18 @@ public class AdminGui extends JFrame {
         c.weighty=1;
         
         JButton adduser = new JButton("Add user");
-        
+                    adduser.addActionListener(new ActionListener()
+             {
+                public void actionPerformed(ActionEvent e) 
+                {
+                    
+                    closethis();
+                    AdminAddNewUserGui addadmin = new AdminAddNewUserGui();
+                    
+         
+                 
+                 }
+              });
         
         this.add(adduser,c);
         
@@ -59,6 +75,11 @@ public class AdminGui extends JFrame {
         c.gridy++;
         JButton totalsum = new JButton("Incomes");
         this.add(totalsum,c);
+        
+    }
+    public void closethis()
+    {
+        this.dispose();
         
     }
 }

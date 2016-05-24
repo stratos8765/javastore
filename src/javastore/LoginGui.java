@@ -90,14 +90,11 @@ public class LoginGui extends JFrame
                        if(usernamefield.equals(returnusername) && passwordfield.equals(returnpassword))
                        {
                            //System.out.println("it works");
-                          //deikse admin gui
+                          AdminGui admingui = new AdminGui(returnusername);
+                          closeThis();
+                          
                        }
-                                             else
-                      {
-                          JFrame error = new JFrame();
-                                  JOptionPane.showMessageDialog(error, "Wrong Username or Password");
-                      }
-                       
+                            
                                 
                                     
                                 

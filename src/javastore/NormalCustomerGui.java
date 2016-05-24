@@ -217,7 +217,7 @@ public class NormalCustomerGui extends JFrame {
           computerppanel.add(pdname,c2);
           computerpdnames.add(pdname);
           c2.gridx++;
-          JLabel pdprice = new JLabel("Price: " +String.valueOf(computerproducts.get(i).getPrice()));
+          JLabel pdprice = new JLabel("  Price: " +String.valueOf(computerproducts.get(i).getPrice()));
           computerppanel.add(pdprice,c2);
           computerpdprices.add(computerproducts.get(i).getPrice());
           c2.gridx++;
@@ -235,7 +235,7 @@ public class NormalCustomerGui extends JFrame {
           computerppanel.add(qty,c2);
           computerpqtys.add(qty);
           c2.gridx++;
-          JButton morebutton = new JButton("More Details");
+          JButton morebutton = new JButton("  More Details");
           computerppanel.add(morebutton,c2);
           computerpdbuttonmore.add(morebutton);
           c2.gridy++;   
@@ -331,11 +331,11 @@ public class NormalCustomerGui extends JFrame {
        {
            
            c2.gridx=0;
-        JLabel pdname = new JLabel("Name: "+laptopproducts.get(i).getName());
+        JLabel pdname = new JLabel("  Name: "+laptopproducts.get(i).getName());
           laptopproductspanel.add(pdname,c2);
           laptoppdnames.add(pdname);
           c2.gridx++;
-          JLabel pdprice = new JLabel("Price: " +String.valueOf(laptopproducts.get(i).getPrice()));
+          JLabel pdprice = new JLabel("  Price: " +String.valueOf(laptopproducts.get(i).getPrice()));
           laptopproductspanel.add(pdprice,c2);
           laptoppdprices.add(laptopproducts.get(i).getPrice());
           c2.gridx++;
@@ -353,7 +353,7 @@ public class NormalCustomerGui extends JFrame {
           laptopproductspanel.add(qty,c2);
           laptoppqtys.add(qty);
           c2.gridx++;
-          JButton morebutton = new JButton("More Details");
+          JButton morebutton = new JButton("  More Details");
           laptopproductspanel.add(morebutton,c2);
           laptopdbuttonmore.add(morebutton);
           c2.gridy++;   
@@ -442,11 +442,11 @@ public class NormalCustomerGui extends JFrame {
        {
            
            c2.gridx=0;
-        JLabel pdname = new JLabel("Name: "+mobileproducts.get(i).getName());
+        JLabel pdname = new JLabel("  Name: "+mobileproducts.get(i).getName());
           mobileproductspanel.add(pdname,c2);
           mobilepdnames.add(pdname);
           c2.gridx++;
-          JLabel pdprice = new JLabel("Price: " +String.valueOf(mobileproducts.get(i).getPrice()));
+          JLabel pdprice = new JLabel("  Price: " +String.valueOf(mobileproducts.get(i).getPrice()));
           mobileproductspanel.add(pdprice,c2);
           mobilepdprices.add(mobileproducts.get(i).getPrice());
           c2.gridx++;
@@ -464,7 +464,7 @@ public class NormalCustomerGui extends JFrame {
           mobileproductspanel.add(qty,c2);
           mobilepqtys.add(qty);
           c2.gridx++;
-          JButton morebutton = new JButton("More Details");
+          JButton morebutton = new JButton("  More Details");
           mobileproductspanel.add(morebutton,c2);
           mobilepdbuttonmore.add(morebutton);
           c2.gridy++;   
@@ -562,11 +562,11 @@ public class NormalCustomerGui extends JFrame {
        {
            
            c2.gridx=0;
-        JLabel pdname = new JLabel("Name: "+printerproducts.get(i).getName());
+        JLabel pdname = new JLabel("  Name: "+printerproducts.get(i).getName());
           printerproductspanel.add(pdname,c2);
           printerpdnames.add(pdname);
           c2.gridx++;
-          JLabel pdprice = new JLabel("Price: " +String.valueOf(printerproducts.get(i).getPrice()));
+          JLabel pdprice = new JLabel("  Price: " +String.valueOf(printerproducts.get(i).getPrice()));
           printerproductspanel.add(pdprice,c2);
           printerpdprices.add(printerproducts.get(i).getPrice());
           c2.gridx++;
@@ -584,7 +584,7 @@ public class NormalCustomerGui extends JFrame {
           printerproductspanel.add(qty,c2);
           printerpqtys.add(qty);
           c2.gridx++;
-          JButton morebutton = new JButton("More Details");
+          JButton morebutton = new JButton("  More Details");
           printerproductspanel.add(morebutton,c2);
           printerpdbuttonmore.add(morebutton);
           c2.gridy++;   
@@ -677,11 +677,11 @@ public class NormalCustomerGui extends JFrame {
        {
            
            c2.gridx=0;
-        JLabel pdname = new JLabel("Name: "+tvproducts.get(i).getName());
+        JLabel pdname = new JLabel("  Name: "+tvproducts.get(i).getName());
           tvproductspanel.add(pdname,c2);
           tvpdnames.add(pdname);
           c2.gridx++;
-          JLabel pdprice = new JLabel("Price: " +String.valueOf(tvproducts.get(i).getPrice()));
+          JLabel pdprice = new JLabel("  Price: " +String.valueOf(tvproducts.get(i).getPrice()));
           tvproductspanel.add(pdprice,c2);
           tvpdprices.add(tvproducts.get(i).getPrice());
           c2.gridx++;
@@ -699,7 +699,7 @@ public class NormalCustomerGui extends JFrame {
           tvproductspanel.add(qty,c2);
           tvpqtys.add(qty);
           c2.gridx++;
-          JButton morebutton = new JButton("More Details");
+          JButton morebutton = new JButton("  More Details");
           tvproductspanel.add(morebutton,c2);
           tvpdbuttonmore.add(morebutton);
           c2.gridy++;   
@@ -878,6 +878,7 @@ c.weighty=1;
                                   rs2=db2.executeUpdate("INSERT INTO basket(`customername`,`pname`,`pprice`,`qty`) VALUES('"+customername+"','"+camerapds.get(i).getName()+"',"+camerapds.get(i).getPrice()+","+Integer.parseInt(camerapqtys.get(i).getText())+");");
                                   rs2=db2.executeUpdate("UPDATE productqtys SET availableqty="+newavailableqty+" WHERE name='"+camerapds.get(i).getName()+"'");
                                           
+                             
                               }
                               else if(Integer.parseInt(camerapqtys.get(i).getText())!=0)
                               {
@@ -1075,6 +1076,8 @@ for(int i =0;i<mobilepqtys.size();i++)
                           
               }               
                             
+               NormalCustomerGui cnew = new NormalCustomerGui(customername);
+               closeThis();
                
             }
             

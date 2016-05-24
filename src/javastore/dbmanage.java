@@ -6,7 +6,7 @@ import java.sql.*;
 public class dbmanage {
    // JDBC driver name and database URL
    private String JDBC_DRIVER = "com.mysql.jdbc.Driver";  
-   private String DB_URL = "jdbc:mysql://localhost/javaproject";
+   private String DB_URL = "jdbc:mysql://localhost/javastratos";
 
    //  Database credentials
    private String USER = "root";

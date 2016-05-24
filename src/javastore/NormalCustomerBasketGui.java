@@ -99,6 +99,8 @@ c.anchor = GridBagConstraints.PAGE_START;
                         rs=conn.executeUpdate("UPDATE productqtys SET availableqty = availableqty + "+pqty+" WHERE name='"+pname+"';");
                         JFrame error = new JFrame();
                         JOptionPane.showMessageDialog(error, "Product Removed!");
+                        closethis();
+                        NormalCustomerBasketGui gui = new NormalCustomerBasketGui(cname);
                         
                     } catch (SQLException ex) {
                         Logger.getLogger(NormalCustomerBasketGui.class.getName()).log(Level.SEVERE, null, ex);

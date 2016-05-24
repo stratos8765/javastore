@@ -78,7 +78,7 @@ public class MoreDetailsComputerProductGui extends JFrame {
        
        c.gridx--;
        c.gridy++;
-       JLabel graphicscardlabel = new JLabel("Graphics Card:");
+       JLabel graphicscardlabel = new JLabel("Graphics Card: ");
        this.add(graphicscardlabel,c);
        c.gridx++;
        JLabel graphicscard = new JLabel(product.getGraphicsCard());
@@ -96,6 +96,7 @@ public class MoreDetailsComputerProductGui extends JFrame {
        this.add(monitorlabel,c);
        c.gridx++;
        JLabel monitor = new JLabel(product.getMonitor());
+       this.add(monitor,c);
        
        
        
