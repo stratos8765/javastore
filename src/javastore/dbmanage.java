@@ -109,4 +109,8 @@ preparedStatement.executeUpdate();
        return result;
        
    }
+
+    ResultSet exequteQuery(java.lang.String select__from_ccustomers) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }//end FirstExample

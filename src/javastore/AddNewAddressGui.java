@@ -5,6 +5,7 @@
  */
 package javastore;
 
+import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
@@ -35,7 +36,13 @@ public class AddNewAddressGui extends JFrame {
         
         JLabel addlabel = new JLabel("Enter new Address:");
         this.add(addlabel,c);
+        
         JTextField address = new JTextField();
+        Font bigFont = address.getFont().deriveFont(Font.PLAIN, 22f);
+         c.weightx=1.;
+    c.fill=GridBagConstraints.HORIZONTAL;
+
+        address.setFont(bigFont);
         c.gridx++;
         this.add(address,c);
         c.gridx=0;
@@ -55,7 +62,7 @@ public class AddNewAddressGui extends JFrame {
                     dbmanage conn = new dbmanage();
                     int rs;
                     try {
-                        rs=conn.executeUpdate("INSERT INTO addresses(name,address) VALUES('"+cname+"','"+address+"';");
+                        rs=conn.executeUpdate("INSERT INTO addresses(name,address) VALUES('"+cname+"','"+address+"');");
                     } catch (SQLException ex) {
                         Logger.getLogger(AddNewAddressGui.class.getName()).log(Level.SEVERE, null, ex);
                     }

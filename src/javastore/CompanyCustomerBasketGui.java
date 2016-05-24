@@ -31,8 +31,8 @@ import static sun.management.Agent.error;
  *
  * @author 3oxic
  */
-public class NormalCustomerBasketGui extends JFrame {
-    public NormalCustomerBasketGui(String customername) throws SQLException
+public class CompanyCustomerBasketGui extends JFrame {
+    public CompanyCustomerBasketGui(String customername) throws SQLException
     {
         this.setSize(800, 500);  
         this.setVisible(true);
@@ -101,7 +101,7 @@ c.anchor = GridBagConstraints.PAGE_START;
                         JOptionPane.showMessageDialog(error, "Product Removed!");
                         
                     } catch (SQLException ex) {
-                        Logger.getLogger(NormalCustomerBasketGui.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(CompanyCustomerBasketGui.class.getName()).log(Level.SEVERE, null, ex);
                     }
                  
                  }
@@ -125,9 +125,25 @@ c.anchor = GridBagConstraints.PAGE_START;
               totalprice=totalprice+((Float.parseFloat(productprices.get(i).getText()))*(Integer.parseInt(productqty.get(i).getText())));
              
           }
-          float fpa=0.23f;
+          dbmanage conn2 = new dbmanage();
+          ResultSet rs2;
+          rs2=conn2.executeQuery("SELECT * FROM ccustomers WHERE username='"+customername+"';");
+          float discountprice=9999;
+          int discount=0;
+          float discountvalue;
+          while(rs2.next())
+          {
+              discountprice=rs2.getFloat("nprice");
+              discount=rs2.getInt("discount");
+          }
+          if(totalprice > discountprice)
+          {
+              discountvalue=discount/(100.0f);
+              totalprice=(totalprice-(totalprice*discountvalue));
+              
+          }
+      
           
-           totalprice = (totalprice+(totalprice*fpa));
           JLabel totalpricelabel = new JLabel("Total Price(With Fees): "+totalprice +" Euro");
 
 
@@ -135,7 +151,7 @@ c.anchor = GridBagConstraints.PAGE_START;
           dbmanage conn = new dbmanage();
           ResultSet rsadd;
           
-          rsadd=conn.executeQuery("SELECT * FROM ncustomers WHERE username='"+customername+"'");
+          rsadd=conn.executeQuery("SELECT * FROM ccustomers WHERE username='"+customername+"'");
           int i=0;
             while(rsadd.next())
             {
@@ -213,7 +229,7 @@ c.anchor = GridBagConstraints.PAGE_START;
                         orderid++;
                     }
                 } catch (SQLException ex) {
-                    Logger.getLogger(NormalCustomerBasketGui.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(CompanyCustomerBasketGui.class.getName()).log(Level.SEVERE, null, ex);
                 }
                
               for(int i=0;i<pnames.size();i++)
@@ -221,13 +237,13 @@ c.anchor = GridBagConstraints.PAGE_START;
                     try {
                         rs2=conn.executeUpdate("INSERT INTO orderdetails(OrderId, pname, pprice, pqty) VALUES("+orderid+",'"+pnames.get(i).getText()+"',"+Float.parseFloat(pprices.get(i).getText())+","+Integer.parseInt(pqtys.get(i).getText())+");");
                     } catch (SQLException ex) {
-                        Logger.getLogger(NormalCustomerBasketGui.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(CompanyCustomerBasketGui.class.getName()).log(Level.SEVERE, null, ex);
                     }
               }
                 try {
                     rs2=conn.executeUpdate("INSERT INTO orders(OrderId, cname, totalprice, status, address) VALUES("+orderid+",'"+cname+"',"+totalprice+",'Order Placed','"+address+"');");
                 } catch (SQLException ex) {
-                    Logger.getLogger(NormalCustomerBasketGui.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(CompanyCustomerBasketGui.class.getName()).log(Level.SEVERE, null, ex);
                 }
           JFrame error = new JFrame();
           JOptionPane.showMessageDialog(error, "Order Placed Succesfully!");
@@ -235,7 +251,7 @@ c.anchor = GridBagConstraints.PAGE_START;
                 try {
                     rs2=conn.executeUpdate("DELETE FROM basket WHERE customername='"+cname+"';");
                 } catch (SQLException ex) {
-                    Logger.getLogger(NormalCustomerBasketGui.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(CompanyCustomerBasketGui.class.getName()).log(Level.SEVERE, null, ex);
                 }
           
             }

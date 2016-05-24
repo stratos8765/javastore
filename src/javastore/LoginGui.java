@@ -131,20 +131,28 @@ public class LoginGui extends JFrame
                     ArrayList<CompanyCustomer> ccustomers = new ArrayList<CompanyCustomer>();
                    users.getCompanyCustomersFromDb();
                    ccustomers=users.getCcustomers();
-                   for(CompanyCustomer customer:ccustomers)
+                   int i=0;
+                   
+                   for(i=0;i<ccustomers.size();i++)
                    {
-                      String returnusername=customer.getUsername();
-                      String returnpassword=customer.getPassword();
+                      String returnusername=ccustomers.get(i).getUsername();
+                      String returnpassword=ccustomers.get(i).getPassword();
                       if(usernamefield.equals(returnusername) && passwordfield.equals(returnpassword))
                       {
-                         //show company customer gui
+                         CompanyCustomerGui cp = new CompanyCustomerGui(returnusername);
+                         closeThis();
+                         
                       }
-                      else
+                      if(i>=ccustomers.size())
                       {
-                         JFrame error = new JFrame();
-                                  JOptionPane.showMessageDialog(error, "Wrong Username or Password");  
+                           JFrame error = new JFrame();
+                                  JOptionPane.showMessageDialog(error, "Wrong Username or Password"); 
                       }
+                      
                    }
+
+                         
+                      
                 }
                 
             }
